@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_deals"
+        android:icon="@drawable/ic_menu_deals"
+        android:title="@string/title_page_deals" />
+    <item
+        android:id="@+id/page_courses"
+        android:icon="@drawable/ic_menu_courses"
+        android:title="@string/title_page_courses" />
+    <item
+        android:id="@+id/page_ipo"
+        android:icon="@drawable/ic_menu_ipo"
+        android:title="@string/title_page_ipo" />
+    <item
+        android:id="@+id/page_news"
+        android:icon="@drawable/ic_menu_news"
+        android:title="@string/title_page_news" />
+    <item
+        android:id="@+id/page_settings"
+        android:icon="@drawable/ic_menu_settings"
+        android:title="@string/title_page_settings" />
+</menu>

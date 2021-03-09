@@ -30,7 +30,7 @@ abstract class BaseStateAdapter<T, VH : DataViewHolder<T>>(
         parent: ViewGroup
     ): RecyclerView.ViewHolder = EmptyViewHolder(
         inflater.inflate(
-            R.layout.activity_main, //R.layout.item_loading,
+            R.layout.item_loading,
             parent,
             false
         )
@@ -41,7 +41,7 @@ abstract class BaseStateAdapter<T, VH : DataViewHolder<T>>(
         parent: ViewGroup
     ): RecyclerView.ViewHolder = EmptyViewHolder(
         inflater.inflate(
-            R.layout.activity_main, //R.layout.item_empty,
+            R.layout.item_empty,
             parent,
             false
         )
@@ -52,7 +52,7 @@ abstract class BaseStateAdapter<T, VH : DataViewHolder<T>>(
         parent: ViewGroup
     ): RecyclerView.ViewHolder = ErrorViewHolder(
         inflater.inflate(
-            R.layout.activity_main, //R.layout.item_error,
+            R.layout.item_error,
             parent,
             false
         ),

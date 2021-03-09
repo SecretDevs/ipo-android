@@ -1,7 +1,9 @@
 package com.roblox.ipo.base
 
 import androidx.lifecycle.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 abstract class BaseViewModel<
@@ -31,7 +33,7 @@ abstract class BaseViewModel<
     private var clearLastIntentSource: (() -> Unit)? = null
 
     protected fun addIntermediateEffect(effect: E) {
-        _effectLiveData.value = effect
+        _effectLiveData.postValue(effect)
     }
 
     override fun states(): LiveData<VS> = viewStateLiveData.distinctUntilChanged()
@@ -41,8 +43,10 @@ abstract class BaseViewModel<
 
         _effectLiveData.addSource(intents) {
             viewModelScope.launch {
-                if (it !is NothingIntent) {
-                    _effectLiveData.postValue(performAction(intentInterpreter(it)))
+                withContext(Dispatchers.IO) {
+                    if (it !is NothingIntent) {
+                        _effectLiveData.postValue(performAction(intentInterpreter(it)))
+                    }
                 }
             }
         }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.Theme.Ipo.ToolbarTitleMain" parent="TextAppearance.Theme.Ipo.Headline6">
+        <item name="android:textColor">@color/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.Theme.Ipo.DealsTabTitle" parent="TextAppearance.Theme.Ipo.Subtitle2">
+
+    </style>
+
+    <style name="TextAppearance.Theme.Ipo.ItemDealName" parent="TextAppearance.Theme.Ipo.Subtitle1">
+        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Theme.Ipo.ItemDealRisk" parent="TextAppearance.Theme.Ipo.Subtitle2">
+        <item name="android:textColor">@color/colorOnBackground</item>
+    </style>
+
+    <style name="TextAppearance.Theme.Ipo.ItemDealChip" parent="TextAppearance.Theme.Ipo.Subtitle2"></style>
+
+    <style name="TextAppearance.Theme.Ipo.ItemDealHelper" parent="TextAppearance.Theme.Ipo.Body2">
+        <item name="android:textColor">@color/colorOnBackgroundMedium</item>
+    </style>
+
+    <style name="TextAppearance.Theme.Ipo.ItemDealBody" parent="TextAppearance.Theme.Ipo.Body2">
+        <item name="android:textColor">@color/colorOnBackground</item>
+    </style>
+
+    <style name="TextAppearance.Theme.Ipo.MessageText" parent="TextAppearance.Theme.Ipo.Subtitle1">
+        <item name="android:textColor">@color/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.Theme.Ipo.DealsStatisticFab" parent="TextAppearance.Theme.Ipo.Subtitle2">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

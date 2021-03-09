@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Ipo</string>
+    <string name="title_deals">Deals</string>
+    <string name="title_page_deals">Deals</string>
+    <string name="title_page_courses">Courses</string>
+    <string name="title_page_ipo">IPO</string>
+    <string name="title_page_news">News</string>
+    <string name="title_page_settings">Settings</string>
+    <string name="title_item_deal_risk">Risk:</string>
+    <string name="title_fragment_deals_tab_favorite">Favorite</string>
+    <string name="title_fragment_deals_tab_ipo">IPO</string>
+    <string name="title_fragment_deals_tab_spac">SPAC</string>
+    <string name="title_fragment_deals_tab_stocks">Stocks</string>
+
+    <string name="btn_text_item_loading_error">Retry</string>
+    <string name="text_item_loading_error">Loading error</string>
+    <string name="text_item_empty">No data</string>
+    
+    <string name="text_chip_open_deal">Open deal</string>
+    <string name="text_chip_averaged_deal">Averaged deal</string>
+    <string name="text_chip_closed_deal">Closed deal</string>
+
+    <string name="text_low_risk_deal">Low</string>
+    <string name="text_medium_risk_deal">Medium</string>
+    <string name="text_high_risk_deal">High</string>
+
+    <string name="text_deal_number">Deal %d</string>
+    <string name="text_btn_deal_statistic">Statistic</string>
+
 </resources>
