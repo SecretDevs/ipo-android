@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_deal_layout"
+    style="@style/Theme.Ipo.DealCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_marginEnd="16dp"
+    tools:layout_marginStart="16dp"
+    tools:layout_marginTop="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_deal_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_deal_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:textAppearance="@style/TextAppearance.Theme.Ipo.ItemDealHelper"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Сделка 1" />
+
+        <TextView
+            android:id="@+id/item_deal_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/gutter_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:textAppearance="@style/TextAppearance.Theme.Ipo.ItemDealName"
+            app:layout_constraintEnd_toStartOf="@+id/item_deal_favorite_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_deal_number"
+            tools:text="Заголовок" />
+
+        <CheckBox
+            android:id="@+id/item_deal_favorite_btn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:button="@drawable/favorite_icon"
+            android:buttonTint="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/item_deal_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:textAppearance="@style/TextAppearance.Theme.Ipo.ItemDealChip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_deal_name"
+            tools:text="Сделка открыта"
+            tools:chipBackgroundColor="@color/colorChipBackgroundDealOpen"
+            tools:textColor="@color/colorChipTextDealOpen"/>
+
+        <TextView
+            android:id="@+id/item_deal_risk_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/gutter_default"
+            android:text="@string/title_item_deal_risk"
+            android:textAppearance="@style/TextAppearance.Theme.Ipo.ItemDealHelper"
+            app:layout_constraintBottom_toBottomOf="@+id/item_deal_risk_value"
+            app:layout_constraintEnd_toStartOf="@+id/item_deal_risk_value"
+            app:layout_constraintTop_toTopOf="@+id/item_deal_risk_value" />
+
+        <TextView
+            android:id="@+id/item_deal_risk_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:drawablePadding="4dp"
+            android:textAppearance="@style/TextAppearance.Theme.Ipo.ItemDealRisk"
+            app:layout_constraintBottom_toBottomOf="@+id/item_deal_state"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_deal_state"
+            tools:drawableStart="@drawable/ic_high_risk"
+            tools:text="Высокий" />
+
+        <TextView
+            android:id="@+id/item_deal_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:textAppearance="@style/TextAppearance.Theme.Ipo.ItemDealBody"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_deal_state"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo." />
+
+        <TextView
+            android:id="@+id/item_deal_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_default"
+            android:textAppearance="@style/TextAppearance.Theme.Ipo.ItemDealHelper"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_deal_description"
+            tools:text="12.01.21 20:20" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

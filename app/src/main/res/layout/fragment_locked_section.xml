@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/locked_deal_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginEnd="32dp"
+        android:text="@string/locked_deal_title"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.LockedDealTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Cделка 3\nзаблокирована"/>
+
+    <TextView
+        android:id="@+id/locked_deal_statistic_hint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:text="@string/locked_deal_statistic_hint"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.LockedDealHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locked_deal_title"
+        tools:text="Но вы можете посмотреть статистику "/>
+
+    <ImageView
+        android:id="@+id/locked_deal_hint_below"
+        android:layout_width="10dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_hint_below"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locked_deal_statistic_hint" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/locked_deal_icon_card"
+        style="@style/Theme.Ipo.LockedIconCard"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="112dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locked_deal_hint_below">
+
+        <ImageView
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_locked_section_icon" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/locked_deal_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="48dp"
+        android:text="@string/locked_deal_description"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.LockedDealSubscription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locked_deal_icon_card"
+        tools:text="Чтобы разблокировать сделку вам необходимо купить подписку на нее"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/locked_deal_buy_btn"
+        style="@style/TextAppearance.Theme.Ipo.Button"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/locked_deal_buy_text"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.ButtonText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locked_deal_description"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="12 000 ₽ - Купить" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_deals_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBackground">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        style="@style/Theme.Ipo.AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryBackground">
+
+        <FrameLayout
+            android:id="@+id/appbar_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize">
+
+            <TextView
+                android:id="@+id/appbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.ToolbarTitleMain"
+                android:text="@string/title_deals"/>
+
+        </FrameLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Theme.Ipo.TabsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/gutter_default"
+            android:layout_marginEnd="@dimen/gutter_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_default">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_fragment_deals_tab_favorite"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_ipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_fragment_deals_tab_ipo"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_spac"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_fragment_deals_tab_spac"/>
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab_stocks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_fragment_deals_tab_stocks"/>
+
+            </com.google.android.material.tabs.TabLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_statistic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:text="@string/text_btn_deal_statistic"
+        android:textColor="@color/colorOnPrimary"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.DealsStatisticFab"
+        app:icon="@drawable/ic_statistic"
+        app:iconTint="@color/colorOnPrimary"
+        app:backgroundTint="@color/colorPrimary"
+        app:shapeAppearance="@style/Theme.Ipo.LightCornerView"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
