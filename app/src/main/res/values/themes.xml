@@ -64,6 +64,16 @@
         <item name="cornerRadius">16dp</item>
     </style>
 
+    <style name="Theme.Ipo.LockedIconCard" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearance">@style/Theme.Ipo.SmoothCornerView</item>
+        <item name="cardElevation">16dp</item>
+    </style>
+
+    <style name="Theme.Ipo.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAppearance">@style/TextAppearance.Theme.Ipo.ButtonText</item>
+        <item name="shapeAppearance">@style/Theme.Ipo.SmoothCornerView</item>
+    </style>
+
     <style name="Theme.Ipo.CircleImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>

@@ -25,7 +25,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
         android:text="@string/locked_deal_statistic_hint"
         android:textAlignment="center"
@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locked_deal_title"
-        tools:text="Но вы можете посмотреть статистику "/>
+        tools:text="Но вы можете посмотреть статистику " />
 
     <ImageView
         android:id="@+id/locked_deal_hint_below"
@@ -50,7 +50,7 @@
         style="@style/Theme.Ipo.LockedIconCard"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locked_deal_hint_below">
@@ -80,7 +80,6 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/locked_deal_buy_btn"
-        style="@style/TextAppearance.Theme.Ipo.Button"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="48dp"
@@ -89,6 +88,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/locked_deal_buy_text"
         android:textAppearance="@style/TextAppearance.Theme.Ipo.ButtonText"
+        app:shapeAppearance="@style/Theme.Ipo.LightCornerView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

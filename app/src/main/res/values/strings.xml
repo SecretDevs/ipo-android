@@ -26,5 +26,10 @@
 
     <string name="text_deal_number">Deal %d</string>
     <string name="text_btn_deal_statistic">Statistic</string>
+    <string name="locked_deal_title">"Deal %d
+locked"</string>
+    <string name="locked_deal_statistic_hint">But you can see statistic</string>
+    <string name="locked_deal_description">To see this deal you have to buy subscription for it</string>
+    <string name="locked_deal_buy_text">%d ₽ - Buy</string>
 
 </resources>

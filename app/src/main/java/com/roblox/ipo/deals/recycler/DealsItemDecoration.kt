@@ -15,13 +15,15 @@ class DealsItemDecoration(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        val position = parent.getChildAdapterPosition(view)
-        outRect.set(
-            margin,
-            margin / 2,
-            2 * margin + fabSize,
-            if (position == 0) margin else margin / 2,
-        )
+        if (view.tag == "fab_dodge") {
+            val position = parent.getChildAdapterPosition(view)
+            outRect.set(
+                margin,
+                margin / 2,
+                2 * margin + fabSize,
+                if (position == 0) margin else margin / 2,
+            )
+        }
     }
 
 }
