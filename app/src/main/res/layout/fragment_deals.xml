@@ -12,6 +12,7 @@
         style="@style/Theme.Ipo.AppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="24dp"
         android:background="@color/colorPrimaryBackground"
         app:elevation="0dp">
 
@@ -20,40 +21,58 @@
             android:layout_width="match_parent"
             android:layout_height="?android:actionBarSize">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_statistic"
+                style="@style/Theme.Ipo.Button.IconOnly"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="@dimen/margin_default"
+                app:icon="@drawable/ic_statistic"
+                app:iconSize="16dp"
+                app:iconTint="@android:color/white"
+                app:shapeAppearanceOverlay="@style/Theme.Ipo.LightCornerView" />
+
             <TextView
                 android:id="@+id/appbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/title_deals"
-                android:textAppearance="@style/TextAppearance.Theme.Ipo.ToolbarTitleMain" />
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline2" />
 
         </FrameLayout>
 
         <com.google.android.material.card.MaterialCardView
             style="@style/Theme.Ipo.TabsCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/gutter_default"
-            android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginEnd="@dimen/gutter_default"
-            android:layout_marginBottom="@dimen/margin_default">
+            android:layout_height="60dp"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/gutter_default"
+            android:layout_marginEnd="@dimen/margin_default">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabInlineLabel="true"
+                android:layout_height="match_parent"
+                android:background="@color/colorAccent"
+                app:tabGravity="center"
                 app:tabIndicator="@drawable/ic_tab_indicator"
-                app:tabIndicatorColor="@color/colorAccent"
-                app:tabTextAppearance="@style/TextAppearance.Theme.Ipo.TabsItemText"
-                app:tabIndicatorHeight="36dp"
-                app:tabIndicatorGravity="center">
+                app:tabIndicatorColor="@android:color/white"
+                app:tabIndicatorGravity="center"
+                app:tabIndicatorHeight="48dp"
+                app:tabInlineLabel="true"
+                app:tabMinWidth="72dp"
+                app:tabMode="scrollable"
+                app:tabPaddingEnd="@dimen/margin_default"
+                app:tabPaddingStart="@dimen/margin_default"
+                app:tabTextAppearance="@style/TextAppearance.Theme.Ipo.Paragraph.Bold">
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab_favorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:icon="@drawable/ic_faved_deal"
                     android:text="@string/title_fragment_deals_tab_favorite" />
 
                 <com.google.android.material.tabs.TabItem
@@ -72,7 +91,8 @@
                     android:id="@+id/tab_stocks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_fragment_deals_tab_stocks" />
+                    android:text="@string/title_fragment_deals_tab_stocks"
+                    tools:icon="@drawable/ic_locked_section" />
 
             </com.google.android.material.tabs.TabLayout>
 
@@ -85,11 +105,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
-
-    <FrameLayout
-        android:id="@+id/motion_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

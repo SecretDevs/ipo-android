@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.roblox.ipo.R
 import com.roblox.ipo.base.BaseFragment
 import com.roblox.ipo.base.recycler.RecyclerState
-import com.roblox.ipo.deals.recycler.FavoriteDealsAdapter
-import com.roblox.ipo.deals.recycler.FavoriteDealsItemDecoration
+import com.roblox.ipo.deals.recycler.DealsAdapter
+import com.roblox.ipo.deals.recycler.DealsItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_deals_list.*
 
@@ -16,7 +16,7 @@ class FavoriteDealsFragment : BaseFragment<FavoriteDealsViewState, FavoriteDeals
         get() = R.layout.fragment_deals_list
     override val viewModel: FavoriteDealsViewModel by viewModels()
 
-    private lateinit var adapter: FavoriteDealsAdapter
+    private lateinit var adapter: DealsAdapter
 
     override fun backStackIntent(): FavoriteDealsIntent =
         FavoriteDealsIntent.FavoriteDealsNothingIntent
@@ -25,16 +25,16 @@ class FavoriteDealsFragment : BaseFragment<FavoriteDealsViewState, FavoriteDeals
         FavoriteDealsIntent.InitialDealsLoadingIntent
 
     override fun initViews() {
-        adapter = FavoriteDealsAdapter(
+        adapter = DealsAdapter(
             onClick = { _intentLiveData.value = FavoriteDealsIntent.OpenDealDetailsIntent(it) },
             onFaveClick = { _intentLiveData.value = FavoriteDealsIntent.ToggleDealFaveIntent(it) },
             onRetry = { _intentLiveData.value = FavoriteDealsIntent.RetryDealsLoadingIntent }
         )
         deals_recycler.adapter = adapter
         deals_recycler.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         deals_recycler.addItemDecoration(
-            FavoriteDealsItemDecoration(
+            DealsItemDecoration(
                 resources.getDimensionPixelSize(
                     R.dimen.margin_default
                 )

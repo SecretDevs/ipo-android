@@ -17,19 +17,41 @@ class DealsUseCaseImpl @Inject constructor() : DealsUseCase {
     override fun getFavoriteDeals(): Result<List<Deal>> = Result.Success(
         listOf(
             Deal(
-                id = 1,
-                name = "Заголовок",
+                id = 13553,
+                name = "Bumble",
+                nameTraded = "BMBL",
                 description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
-                state = 1,
+                state = 2,
                 risk = 3,
                 isFavorite = true,
                 date = 1611249615
             ),
             Deal(
-                id = 2,
-                name = "Заголовок",
+                id = 13552,
+                name = "MYT Netherlands",
+                nameTraded = "MYTE",
                 description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
-                state = 2,
+                state = 1,
+                risk = 2,
+                isFavorite = true,
+                date = 1611249615
+            ),
+            Deal(
+                id = 13551,
+                name = "TELUS International",
+                nameTraded = "BMBL",
+                description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
+                state = 1,
+                risk = 1,
+                isFavorite = true,
+                date = 1611249615
+            ),
+            Deal(
+                id = 13550,
+                name = "ON24",
+                nameTraded = "ONTF",
+                description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
+                state = 3,
                 risk = 2,
                 isFavorite = true,
                 date = 1611249615
@@ -40,29 +62,32 @@ class DealsUseCaseImpl @Inject constructor() : DealsUseCase {
     override fun getIpoDeals(): Result<List<Deal>> = Result.Success(
         listOf(
             Deal(
-                id = 1,
-                name = "Заголовок",
+                id = 13551,
+                name = "TELUS International",
+                nameTraded = "BMBL",
                 description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
                 state = 1,
-                risk = 3,
-                isFavorite = true,
-                date = 1611249615
-            ),
-            Deal(
-                id = 2,
-                name = "Заголовок",
-                description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
-                state = 2,
-                risk = 2,
+                risk = 1,
                 isFavorite = false,
                 date = 1611249615
             ),
             Deal(
-                id = 3,
-                name = "Заголовок",
+                id = 13550,
+                name = "ON24",
+                nameTraded = "ONTF",
                 description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
                 state = 3,
-                risk = 1,
+                risk = 2,
+                isFavorite = true,
+                date = 1611249615
+            ),
+            Deal(
+                id = 13553,
+                name = "Bumble",
+                nameTraded = "BMBL",
+                description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
+                state = 2,
+                risk = 3,
                 isFavorite = false,
                 date = 1611249615
             )
@@ -72,11 +97,22 @@ class DealsUseCaseImpl @Inject constructor() : DealsUseCase {
     override fun getSpacDeals(): Result<List<Deal>> = Result.Success(
         listOf(
             Deal(
-                id = 1,
-                name = "Заголовок",
+                id = 13550,
+                name = "ON24",
+                nameTraded = "ONTF",
                 description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
-                state = 2,
+                state = 3,
                 risk = 2,
+                isFavorite = true,
+                date = 1611249615
+            ),
+            Deal(
+                id = 13551,
+                name = "TELUS International",
+                nameTraded = "BMBL",
+                description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaLorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiusm",
+                state = 1,
+                risk = 1,
                 isFavorite = true,
                 date = 1611249615
             )

@@ -22,12 +22,25 @@ class DealViewHolder(
 
     override fun bindData(data: Deal) {
         this.deal = data
+        root.item_deal_number.text = root.resources.getString(
+            R.string.text_deal_number,
+            data.id
+        )
         root.item_deal_name.text = data.name
+        root.item_deal_name_traded.text = data.nameTraded
         root.item_deal_description.text = data.description
-        root.item_deal_date.text = DateUtils.formatDateTime(
-            root.context,
-            data.date,
-            DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_SHOW_TIME or DateUtils.FORMAT_NUMERIC_DATE
+        root.item_deal_date.text = root.resources.getString(
+            R.string.text_deal_date,
+            DateUtils.formatDateTime(
+                root.context,
+                data.date,
+                DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_NUMERIC_DATE
+            ),
+            DateUtils.formatDateTime(
+                root.context,
+                data.date,
+                DateUtils.FORMAT_SHOW_TIME or DateUtils.FORMAT_NUMERIC_DATE
+            )
         )
         root.item_deal_favorite_btn.isChecked = data.isFavorite
 

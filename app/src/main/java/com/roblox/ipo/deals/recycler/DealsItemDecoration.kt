@@ -5,8 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 class DealsItemDecoration(
-    private val margin: Int,
-    private val fabSize: Int
+    private val margin: Int
 ) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -15,15 +14,13 @@ class DealsItemDecoration(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        if (view.tag == "fab_dodge") {
-            val position = parent.getChildAdapterPosition(view)
-            outRect.set(
-                margin,
-                margin / 2,
-                2 * margin + fabSize,
-                if (position == 0) margin else margin / 2,
-            )
-        }
+        val position = parent.getChildAdapterPosition(view)
+        outRect.set(
+            margin,
+            margin / 2,
+            margin,
+            margin / 2,
+        )
     }
 
 }

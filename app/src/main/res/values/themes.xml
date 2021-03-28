@@ -16,6 +16,8 @@
         <item name="windowNoTitle">true</item>
 
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
 
         <item name="bottomNavigationStyle">@style/Theme.Ipo.BottomNavigationView</item>
     </style>
@@ -34,7 +36,8 @@
         <item name="background">@drawable/ic_rounded_view</item>
         <item name="itemIconSize">16dp</item>
         <item name="itemIconPadding">12dp</item>
-        <item name="itemTextAppearance">@style/TextAppearance.Theme.Ipo.NavText</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.Theme.Ipo.NavText</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.Theme.Ipo.NavText</item>
         <item name="materialThemeOverlay">
             @style/ThemeOverlay.Ipo.AppTheme.BottomNavigationView
         </item>
@@ -54,7 +57,8 @@
 
     <style name="Theme.Ipo.TabsCard" parent="Widget.MaterialComponents.CardView">
         <item name="shapeAppearance">@style/Theme.Ipo.SmoothCornerView</item>
-        <item name="cardElevation">16dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="background">@color/colorAccent</item>
     </style>
 
     <style name="Theme.Ipo.Tab" parent="Widget.MaterialComponents.TabLayout">
@@ -72,8 +76,19 @@
     </style>
 
     <style name="Theme.Ipo.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:textAppearance">@style/TextAppearance.Theme.Ipo.ButtonText</item>
+        <item name="android:textAppearance">@style/TextAppearance.Theme.Ipo.Button</item>
         <item name="shapeAppearance">@style/Theme.Ipo.SmoothCornerView</item>
+    </style>
+
+    <style name="Theme.Ipo.Button.IconOnly" parent="Widget.MaterialComponents.Button">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:minWidth">36dp</item>
+        <item name="android:minHeight">36dp</item>
+        <item name="strokeWidth">0dp</item>
     </style>
 
     <style name="Theme.Ipo.CircleImageView" parent="">

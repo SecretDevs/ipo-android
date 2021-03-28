@@ -8,6 +8,9 @@
         android:id="@+id/deals_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="@dimen/margin_default"
+        android:paddingBottom="@dimen/margin_default"
+        android:clipToPadding="false"
         tools:listitem="@layout/item_deal"/>
 
 </FrameLayout>

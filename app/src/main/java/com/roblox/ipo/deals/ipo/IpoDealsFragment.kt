@@ -32,14 +32,11 @@ class IpoDealsFragment : BaseFragment<IpoDealsViewState, IpoDealsIntent>() {
         )
         deals_recycler.adapter = adapter
         deals_recycler.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         deals_recycler.addItemDecoration(
             DealsItemDecoration(
                 resources.getDimensionPixelSize(
                     R.dimen.margin_default
-                ),
-                resources.getDimensionPixelSize(
-                    R.dimen.fab_size
                 )
             )
         )

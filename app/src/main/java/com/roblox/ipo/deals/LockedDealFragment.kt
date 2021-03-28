@@ -24,14 +24,17 @@ class LockedDealFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         locked_deal_title.text = resources.getString(
-            R.string.locked_deal_title, arguments?.getInt(
-                DEAL_NUMBER
-            )
+            R.string.title_locked_deal,
+            when (arguments?.getInt(DEAL_NUMBER)) {
+                1 -> resources.getString(R.string.title_locked_deal_ipo)
+                2 -> resources.getString(R.string.title_locked_deal_spac)
+                3 -> resources.getString(R.string.title_locked_deal_stocks)
+                else -> throw IllegalArgumentException("too much tabs")
+            }
         )
-        locked_deal_buy_btn.text = resources.getString(
-            R.string.locked_deal_buy_text, arguments?.getInt(
-                DEAL_SUB_PRICE
-            )
+        locked_deal_buy_price.text = resources.getString(
+            R.string.text_locked_deal_buy_price,
+            arguments?.getInt(DEAL_SUB_PRICE)
         )
     }
 

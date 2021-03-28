@@ -8,25 +8,26 @@
     <color name="colorPrimaryError">#B00020</color>
 
     <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorOnPrimaryMedium">#FFFFFF</color>
+    <color name="colorOnPrimaryMedium">#99FFFFFF</color>
     <color name="colorOnSecondary">#2E313A</color>
     <color name="colorOnBackground">#2E313A</color>
     <color name="colorOnBackgroundMedium">#B0B4C8</color>
     <color name="colorOnSurface">#2E313A</color>
     <color name="colorOnSurfaceMedium">#B0B4C8</color>
     <color name="colorOnError">#ffffff</color>
-    <color name="colorGray">#8F8F8F</color>
+    <color name="colorGray">#E1E4EE</color>
     <color name="colorBorders">#E8E8E8</color>
 
     <color name="colorChipBackgroundDealOpen">#2617C06F</color>
     <color name="colorChipTextDealOpen">#17C06F</color>
     <color name="colorChipBackgroundDealAveraged">#26F9B144</color>
     <color name="colorChipTextDealAveraged">#F9B144</color>
-    <color name="colorChipBackgroundDealClosed">#03B0B4C8</color>
+    <color name="colorChipBackgroundDealClosed">#26B0B4C8</color>
     <color name="colorChipTextDealClosed">#B0B4C8</color>
     
     <color name="colorGreen">#17C06F</color>
     <color name="colorRed">#FA5555</color>
     <color name="colorOrange">#F9B144</color>
+    <color name="colorGray2">#EBEEF5</color>
 
 </resources>
