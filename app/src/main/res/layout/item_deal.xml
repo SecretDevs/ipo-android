@@ -48,7 +48,7 @@
             android:layout_height="32dp"
             android:layout_marginTop="@dimen/margin_default"
             android:layout_marginEnd="@dimen/margin_default"
-            android:button="@drawable/ic_faved_deal"
+            android:button="@drawable/ic_favorite_check"
             android:buttonTint="@color/colorOrange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

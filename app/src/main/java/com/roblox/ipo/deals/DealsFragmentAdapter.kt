@@ -10,8 +10,6 @@ import com.roblox.ipo.deals.stocks.StockDealsFragment
 class DealsFragmentAdapter(
     fragment: Fragment
 ) : FragmentStateAdapter(fragment) {
-    val states: List<Boolean>
-        get() = _states
     private val _states = DEFAULT_STATE
 
     fun updateStates(states: List<Boolean>) {
