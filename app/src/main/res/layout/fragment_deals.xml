@@ -5,7 +5,7 @@
     android:id="@+id/fragment_deals_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryBackground">
+    tools:background="@color/colorPrimaryBackground">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -23,7 +23,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_statistic"
-                style="@style/Theme.Ipo.Button.IconOnly"
+                style="@style/Theme.Ipo.Button.IconOnly.Filled"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="start|center_vertical"

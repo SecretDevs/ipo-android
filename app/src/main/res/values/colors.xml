@@ -30,4 +30,6 @@
     <color name="colorOrange">#F9B144</color>
     <color name="colorGray2">#EBEEF5</color>
 
+    <color name="colorOnboardingCardBackground">#1AFFFFFF</color>
+
 </resources>

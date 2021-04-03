@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/colorPrimaryBackground">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        style="@style/Theme.Ipo.AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryBackground"
+        android:paddingTop="24dp"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/appbar_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_arrow_back"
+                style="@style/Theme.Ipo.Button.IconOnly"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="@dimen/margin_default"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                app:icon="@drawable/ic_arrow_back"
+                app:iconTint="@color/colorOnBackgroundMedium" />
+
+            <TextView
+                android:id="@+id/appbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/title_quiz"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline2"
+                tools:text="Опрос" />
+
+        </FrameLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/quiz_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.Paragraph.Bold"
+        app:chipBackgroundColor="@color/colorGray2"
+        app:layout_constraintBottom_toTopOf="@+id/quiz_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="5 / 7" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/quiz_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@+id/quiz_next_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_step"
+        app:shapeAppearance="@style/Theme.Ipo.SmoothCornerView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/quiz_card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/quiz_card_hint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/hint_quiz_target"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Укажите вашу основную цель работы с фондовым рынком?" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/quiz_card_input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quiz_card_hint"
+                app:shapeAppearance="@style/Theme.Ipo.LightCornerView">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/quiz_card_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/hint_quiz_target_choice"
+                    android:inputType="none"
+                    tools:hint="Выберите вариант..." />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/quiz_next_btn"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:text="@string/text_btn_quiz_next"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.Button"
+        app:layout_constraintBottom_toTopOf="@+id/quiz_skip_btn"
+        app:layout_constraintEnd_toEndOf="@+id/quiz_skip_btn"
+        app:layout_constraintStart_toStartOf="@+id/quiz_skip_btn"
+        app:shapeAppearance="@style/Theme.Ipo.SmoothCornerView"
+        tools:text="Далее" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/quiz_skip_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:text="@string/text_btn_quiz_skip"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.Button"
+        android:textColor="@color/colorPrimary"
+        app:backgroundTint="@color/colorGray2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearance="@style/Theme.Ipo.SmoothCornerView"
+        tools:text="Пройти тест позже" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:background="@color/colorPrimaryBackground">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        style="@style/Theme.Ipo.AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryBackground"
+        android:paddingTop="24dp"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/appbar_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_arrow_back"
+                style="@style/Theme.Ipo.Button.IconOnly"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="@dimen/margin_default"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                app:icon="@drawable/ic_arrow_back"
+                app:iconTint="@color/colorOnBackgroundMedium" />
+
+            <TextView
+                android:id="@+id/appbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/title_login"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline2"
+                tools:text="Регистрация"/>
+
+        </FrameLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/login_phone_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        app:layout_constraintBottom_toTopOf="@+id/login_send_code_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+        app:shapeAppearance="@style/Theme.Ipo.SmoothCornerView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/login_phone_card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/login_phone_card_hint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/hint_login_phone_number_enter"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Введите ваш номер телефона" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_phone_card_input_layout"
+                style="@style/Theme.IPO.InputField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:hint="@string/hint_login_phone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_phone_card_hint"
+                app:shapeAppearance="@style/Theme.Ipo.LightCornerView">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_phone_card_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="start"
+                    android:gravity="center_horizontal"
+                    android:inputType="phone"
+                    android:textAlignment="center" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/login_terms_accept"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/text_checkbox_terms_descriptions"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Subtext"
+                app:buttonTint="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_phone_card_input_layout"
+                tools:checked="true"
+                tools:text="Я ознакомлен с условиями и принимаю их" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_send_code_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginBottom="100dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:text="@string/text_btn_login_send_code"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.Button"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:shapeAppearance="@style/Theme.Ipo.SmoothCornerView"
+        tools:text="Отправить код" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@
     <string name="btn_text_item_loading_error">Retry</string>
     <string name="text_item_loading_error">Loading error</string>
     <string name="text_item_empty">No data</string>
-    
+
     <string name="text_chip_open_deal">Open deal</string>
     <string name="text_chip_averaged_deal">Averaged deal</string>
     <string name="text_chip_closed_deal">Closed deal</string>
@@ -38,5 +38,58 @@ locked"</string>
     <string name="text_locked_deal_description">To see this deal you have to buy subscription for it</string>
     <string name="text_locked_deal_buy_description">Get access</string>
     <string name="text_locked_deal_buy_price">%d ₽</string>
+    <string name="hint_onboarding_login">Create new account or login</string>
+    <string name="text_btn_onboarding_login">Login</string>
+    <string name="title_login">Login</string>
+    <string name="hint_login_phone">+7 999 123–45–67</string>
+    <string name="text_btn_login_send_code">Send code</string>
+    <string name="text_btn_login_confirmation_next">Next</string>
+    <string name="text_btn_login_confirmation_resend_code">Resend code</string>
+
+    <string name="text_quiz_step">%d / 7</string>
+    <string name="text_btn_quiz_next">Next</string>
+    <string name="text_btn_quiz_skip">Take quiz later</string>
+    <string name="hint_login_phone_number_enter">Enter your phone number</string>
+    <string name="text_checkbox_terms_descriptions">I accept terms and conditions</string>
+    <string name="text_login_confirmation_phone_number">Code sent to number %s</string>
+    <string name="hint_login_confirmation_card">Enter 4 digit code</string>
+    <string name="hint_quiz_age">How old are you?</string>
+    <string name="hint_age_reminder">You must be 18 or older!</string>
+    <string name="title_quiz">Quiz</string>
+    <string name="hint_quiz_experience">What is your investment experience?</string>
+    <string name="quiz_experience_no">No</string>
+    <string name="quiz_experience_less_year">Less 1 year</string>
+    <string name="quiz_experience_one_three">1 - 3 years</string>
+    <string name="quiz_experience_more_three">More 3 years</string>
+    <string name="hint_quiz_fund">How much capital do you have</string>
+    <string name="text_quiz_fund_1">Less 10 000 $</string>
+    <string name="text_quiz_fund_2">10 000 $ - 50 000 $</string>
+    <string name="text_quiz_fund_3">50 000 $ - 250 000 $</string>
+    <string name="text_quiz_fund_4">More 250 000 $</string>
+    <string name="hint_quiz_target">What is your main goal of working with the stock market?</string>
+    <string name="hint_quiz_target_choice">Select option…</string>
+    <string name="text_quiz_card_profitablity_1">15%</string>
+    <string name="text_quiz_card_profitablity_2">25%</string>
+    <string name="text_quiz_card_profitablity_3">50%</string>
+    <string name="text_quiz_card_profitablity_4">100%</string>
+    <string name="text_quiz_card_profitablity_5">More 100%</string>
+    <string name="text_quiz_card_risk_1">Less 5%</string>
+    <string name="text_quiz_card_risk_2">Up to 25%</string>
+    <string name="text_quiz_card_risk_4">Up to 50%</string>
+    <string name="text_quiz_card_risk_5">Up to 100%</string>
+    <string name="hint_quiz_tools">What tools are you interested in?</string>
+    <string name="text_quiz_tools_check_1">Bonds</string>
+    <string name="text_quiz_tools_check_2">Stocks</string>
+    <string name="text_quiz_tools_check_3">Futures</string>
+    <string name="text_quiz_tools_check_4">Option</string>
+    <string name="text_quiz_tools_check_5">IPO</string>
+    <string name="text_quiz_tools_check_6">Pre-IPO</string>
+    <string name="text_quiz_tools_check_7">SPAC</string>
+    <string name="text_quiz_tools_check_8">Resources</string>
+    <string-array name="text_quiz_target_options">
+        <item>Savings</item>
+        <item>Basic income</item>
+        <item>Additional income</item>
+    </string-array>
 
 </resources>

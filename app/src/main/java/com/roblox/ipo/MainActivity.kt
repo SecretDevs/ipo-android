@@ -10,13 +10,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.roblox.ipo.deals.DealsFragment
 import com.roblox.ipo.navigation.Coordinator
+import com.roblox.ipo.onboarding.confrimation.ConfirmationFragment
+import com.roblox.ipo.onboarding.login.LoginFragment
+import com.roblox.ipo.onboarding.quiz.*
+import com.roblox.ipo.onboarding.welcome.WelcomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 import javax.inject.Inject
 
+
+//TODO: change windowLightStatusBar
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     @Inject
@@ -30,7 +35,15 @@ class MainActivity : AppCompatActivity() {
                 v: View,
                 savedInstanceState: Bundle?
             ) {
-                bottom_navigation.isVisible = bottomNavigationViewFragments.contains(f::class)
+                bottom_navigation.isVisible = !bottomNavigationlessViewFragments.contains(f::class)
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (!darkStatusBarFragments.contains(f::class)) {
+                        window.decorView.systemUiVisibility = window.decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                    } else {
+                        window.decorView.systemUiVisibility = window.decorView.systemUiVisibility and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+                    }
+                }
             }
         }
 
@@ -98,8 +111,20 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private var LAST_ITEM: Int = R.id.page_deals
-        private val bottomNavigationViewFragments = setOf(
-            DealsFragment::class
+        private val bottomNavigationlessViewFragments = setOf(
+            WelcomeFragment::class,
+            LoginFragment::class,
+            ConfirmationFragment::class,
+            QuizAgeFragment::class,
+            QuizExperienceFragment::class,
+            QuizFundFragment::class,
+            QuizProfitabilityFragment::class,
+            QuizRiskFragment::class,
+            QuizTargetFragment::class,
+            QuizToolsFragment::class
+        )
+        private val darkStatusBarFragments = setOf(
+            WelcomeFragment::class
         )
     }
 }
