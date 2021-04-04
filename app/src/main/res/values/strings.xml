@@ -86,6 +86,8 @@ locked"</string>
     <string name="text_quiz_tools_check_6">Pre-IPO</string>
     <string name="text_quiz_tools_check_7">SPAC</string>
     <string name="text_quiz_tools_check_8">Resources</string>
+    <string name="hint_quiz_profitability">Specify the target level of annual return on the portfolio</string>
+    <string name="hint_quiz_risk">Indicate the level of risk with which you are willing to work</string>
     <string-array name="text_quiz_target_options">
         <item>Savings</item>
         <item>Basic income</item>

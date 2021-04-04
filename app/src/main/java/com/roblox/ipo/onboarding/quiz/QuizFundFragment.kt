@@ -9,11 +9,6 @@ import com.roblox.ipo.R
 import com.roblox.ipo.navigation.Coordinator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_quiz_fund.*
-import kotlinx.android.synthetic.main.fragment_quiz_fund.btn_arrow_back
-import kotlinx.android.synthetic.main.fragment_quiz_fund.quiz_next_btn
-import kotlinx.android.synthetic.main.fragment_quiz_fund.quiz_skip_btn
-import kotlinx.android.synthetic.main.fragment_quiz_fund.quiz_step
-import kotlinx.android.synthetic.main.fragment_quiz_tools.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -44,7 +39,8 @@ class QuizFundFragment : Fragment() {
             coordinator.navigateToDeals()
         }
         quiz_card_fund_group.setOnCheckedChangeListener { group, checkedId ->
-
+            quiz_next_btn.isEnabled = checkedId != -1
         }
+        quiz_next_btn.isEnabled = quiz_card_fund_group.checkedRadioButtonId != -1
     }
 }

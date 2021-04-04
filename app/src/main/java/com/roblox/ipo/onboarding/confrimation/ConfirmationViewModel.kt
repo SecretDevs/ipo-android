@@ -2,10 +2,12 @@ package com.roblox.ipo.onboarding.confrimation
 
 import androidx.hilt.lifecycle.ViewModelInject
 import com.roblox.ipo.base.BaseViewModel
+import com.roblox.ipo.data.usecase.AuthUseCase
 import com.roblox.ipo.navigation.Coordinator
 
 class ConfirmationViewModel @ViewModelInject constructor(
-    private val coordinator: Coordinator
+    private val coordinator: Coordinator,
+    private val authUseCase: AuthUseCase
 ) : BaseViewModel<ConfirmationViewState, ConfirmationEffect, ConfirmationIntent, ConfirmationAction>() {
     override fun initialState(): ConfirmationViewState = ConfirmationViewState(
         phoneNumber = "",
@@ -27,10 +29,8 @@ class ConfirmationViewModel @ViewModelInject constructor(
 
     override suspend fun performAction(action: ConfirmationAction): ConfirmationEffect =
         when (action) {
-            ConfirmationAction.LoadPhoneNumberAction -> {
-
-                ConfirmationEffect.PhoneLoadedEffect("pepega")
-            }
+            ConfirmationAction.LoadPhoneNumberAction ->
+                ConfirmationEffect.PhoneLoadedEffect(authUseCase.getUserPhoneNumber())
             ConfirmationAction.NavigateBackAction -> {
                 coordinator.pop()
                 ConfirmationEffect.NothingEffect

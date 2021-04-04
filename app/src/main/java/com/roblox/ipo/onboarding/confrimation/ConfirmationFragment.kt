@@ -6,8 +6,6 @@ import com.roblox.ipo.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login_confirmation.*
 
-
-//TODO: prefs with saving phone number
 @AndroidEntryPoint
 class ConfirmationFragment : BaseFragment<ConfirmationViewState, ConfirmationIntent>() {
     override val layoutResourceId: Int
@@ -34,8 +32,8 @@ class ConfirmationFragment : BaseFragment<ConfirmationViewState, ConfirmationInt
     }
 
     override fun render(viewState: ConfirmationViewState) {
-        login_confirmation_next_btn.isClickable = viewState.isConfirmed
-        login_confirmation_resend_code.isClickable = !viewState.isConfirmed
+        login_confirmation_next_btn.isEnabled = viewState.isConfirmed
+        login_confirmation_resend_code.isEnabled = !viewState.isConfirmed
         if (viewState.phoneNumber.isNotEmpty()) {
             login_confirmation_card_phone_number.text = resources.getString(
                 R.string.text_login_confirmation_phone_number,

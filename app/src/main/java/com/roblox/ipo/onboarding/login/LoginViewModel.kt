@@ -2,10 +2,12 @@ package com.roblox.ipo.onboarding.login
 
 import androidx.hilt.lifecycle.ViewModelInject
 import com.roblox.ipo.base.BaseViewModel
+import com.roblox.ipo.data.usecase.AuthUseCase
 import com.roblox.ipo.navigation.Coordinator
 
 class LoginViewModel @ViewModelInject constructor(
-    private val coordinator: Coordinator
+    private val coordinator: Coordinator,
+    private val authUseCase: AuthUseCase
 ) : BaseViewModel<LoginViewState, LoginEffect, LoginIntent, LoginAction>() {
     override fun initialState(): LoginViewState = LoginViewState(
         errorCode = -1,
@@ -34,12 +36,14 @@ class LoginViewModel @ViewModelInject constructor(
                 LoginEffect.NothingEffect
             }
             is LoginAction.NavigateToConfirmationAction -> {
+                authUseCase.saveUserPhoneNumber(action.phone)
                 coordinator.navigateToConfirmation()
                 LoginEffect.NothingEffect
             }
-            is LoginAction.PhoneLengthChangeAction -> LoginEffect.PhoneLengthChangeEffect(
-                action.length == 10
-            )
+            is LoginAction.PhoneLengthChangeAction -> {
+                val isProbablyRussianNumber = action.length == WELL_FORMATTED_RUSSIAN_NUMBER_LENGTH
+                LoginEffect.PhoneLengthChangeEffect(isProbablyRussianNumber)
+            }
             is LoginAction.TermsAcceptStateChangeAction -> LoginEffect.TermsChangeEffect(
                 action.isAccepted
             )
@@ -67,5 +71,9 @@ class LoginViewModel @ViewModelInject constructor(
                 isTermsChecked = effect.state
             )
         }
+
+    companion object {
+        private const val WELL_FORMATTED_RUSSIAN_NUMBER_LENGTH = 16
+    }
 
 }

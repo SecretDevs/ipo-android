@@ -9,11 +9,6 @@ import com.roblox.ipo.R
 import com.roblox.ipo.navigation.Coordinator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_quiz_profitability.*
-import kotlinx.android.synthetic.main.fragment_quiz_profitability.btn_arrow_back
-import kotlinx.android.synthetic.main.fragment_quiz_profitability.quiz_next_btn
-import kotlinx.android.synthetic.main.fragment_quiz_profitability.quiz_skip_btn
-import kotlinx.android.synthetic.main.fragment_quiz_profitability.quiz_step
-import kotlinx.android.synthetic.main.fragment_quiz_tools.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -43,11 +38,30 @@ class QuizProfitabilityFragment : Fragment() {
         quiz_skip_btn.setOnClickListener {
             coordinator.navigateToDeals()
         }
-        quiz_card_profitablity_group_1.setOnCheckedChangeListener { group, checkedId ->
-
+        var isCascade = false
+        quiz_card_profitablity_group_1.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId != -1 && !isCascade) {
+                isCascade = true
+                quiz_card_profitablity_group_2.check(-1)
+            }
+            quiz_next_btn.isEnabled = checkedId != -1
+            if (isCascade) {
+                isCascade = false
+            }
         }
-        quiz_card_profitablity_group_2.setOnCheckedChangeListener { group, checkedId ->
-
+        quiz_card_profitablity_group_2.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId != -1 && !isCascade) {
+                isCascade = true
+                quiz_card_profitablity_group_1.check(-1)
+                if (isCascade) {
+                    isCascade = false
+                }
+            }
+            quiz_next_btn.isEnabled = checkedId != -1
         }
+        quiz_next_btn.isEnabled = Math.max(
+            quiz_card_profitablity_group_1.checkedRadioButtonId,
+            quiz_card_profitablity_group_2.checkedRadioButtonId
+        ) != -1
     }
 }

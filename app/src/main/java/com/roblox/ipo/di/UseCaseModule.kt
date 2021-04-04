@@ -1,5 +1,7 @@
 package com.roblox.ipo.di
 
+import com.roblox.ipo.data.usecase.AuthUseCase
+import com.roblox.ipo.data.usecase.AuthUseCaseImpl
 import com.roblox.ipo.data.usecase.DealsUseCase
 import com.roblox.ipo.data.usecase.DealsUseCaseImpl
 import dagger.Binds
@@ -15,5 +17,10 @@ abstract class UseCaseModule {
     abstract fun bindDealsUseCase(
         dealsUseCaseImpl: DealsUseCaseImpl
     ): DealsUseCase
+
+    @Binds
+    abstract fun bindAuthUseCase(
+        authUseCaseImpl: AuthUseCaseImpl
+    ): AuthUseCase
 
 }

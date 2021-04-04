@@ -9,11 +9,6 @@ import com.roblox.ipo.R
 import com.roblox.ipo.navigation.Coordinator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_quiz_risk.*
-import kotlinx.android.synthetic.main.fragment_quiz_risk.btn_arrow_back
-import kotlinx.android.synthetic.main.fragment_quiz_risk.quiz_next_btn
-import kotlinx.android.synthetic.main.fragment_quiz_risk.quiz_skip_btn
-import kotlinx.android.synthetic.main.fragment_quiz_risk.quiz_step
-import kotlinx.android.synthetic.main.fragment_quiz_tools.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -43,11 +38,30 @@ class QuizRiskFragment : Fragment() {
         quiz_skip_btn.setOnClickListener {
             coordinator.navigateToDeals()
         }
+        var isCascade = false
         quiz_card_risk_group_1.setOnCheckedChangeListener { group, checkedId ->
-
+            if (checkedId != -1 && !isCascade) {
+                isCascade = true
+                quiz_card_risk_group_2.check(-1)
+            }
+            quiz_next_btn.isEnabled = checkedId != -1
+            if (isCascade) {
+                isCascade = false
+            }
         }
         quiz_card_risk_group_2.setOnCheckedChangeListener { group, checkedId ->
-
+            if (checkedId != -1 && !isCascade) {
+                isCascade = true
+                quiz_card_risk_group_1.check(-1)
+            }
+            quiz_next_btn.isEnabled = checkedId != -1
+            if (isCascade) {
+                isCascade = false
+            }
         }
+        quiz_next_btn.isEnabled = Math.max(
+            quiz_card_risk_group_1.checkedRadioButtonId,
+            quiz_card_risk_group_2.checkedRadioButtonId
+        ) != -1
     }
 }

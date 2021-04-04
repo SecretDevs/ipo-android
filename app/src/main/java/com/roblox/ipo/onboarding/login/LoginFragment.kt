@@ -1,11 +1,15 @@
 package com.roblox.ipo.onboarding.login
 
+import android.telephony.PhoneNumberFormattingTextWatcher
+import android.view.View
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import com.roblox.ipo.R
 import com.roblox.ipo.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
+import timber.log.Timber
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<LoginViewState, LoginIntent>() {
@@ -30,6 +34,7 @@ class LoginFragment : BaseFragment<LoginViewState, LoginIntent>() {
             _intentLiveData.value =
                 LoginIntent.PhoneLengthChangeIntent(text?.length ?: 0)
         }
+        login_phone_card_input.addTextChangedListener(PhoneNumberFormattingTextWatcher())
         login_terms_accept.setOnCheckedChangeListener { _, isChecked ->
             _intentLiveData.value = LoginIntent.TermsAcceptStateChangeIntent(isChecked)
         }
@@ -38,8 +43,11 @@ class LoginFragment : BaseFragment<LoginViewState, LoginIntent>() {
     //TODO: not clickable button style
     override fun render(viewState: LoginViewState) {
         login_terms_accept.isChecked = viewState.isTermsChecked
-        login_send_code_btn.isClickable = viewState.isLengthFits && viewState.isTermsChecked
+        login_send_code_btn.isEnabled = viewState.isLengthFits && viewState.isTermsChecked
         when (viewState.errorCode) {
+            1 -> login_phone_card_input.error = ""
+            -1 -> login_phone_card_input.error = null
         }
+
     }
 }

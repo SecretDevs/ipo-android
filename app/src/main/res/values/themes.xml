@@ -108,6 +108,8 @@
         <item name="hintTextAppearance">@style/TextAppearance.Theme.Ipo.Login</item>
         <item name="android:textAppearance">@style/TextAppearance.Theme.Ipo.Login</item>
         <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="hintEnabled">false</item>
+        <item name="errorIconDrawable">@null</item>
     </style>
 
     <style name="Theme.IPO.InputField.Dropdown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
@@ -116,6 +118,8 @@
         <item name="hintTextAppearance">@style/TextAppearance.Theme.Ipo.Login</item>
         <item name="android:textAppearance">@style/TextAppearance.Theme.Ipo.Login</item>
         <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="hintEnabled">false</item>
+        <item name="labelVisibilityMode">unlabeled</item>
     </style>
 
     <style name="Theme.Ipo.CircleImageView" parent="">

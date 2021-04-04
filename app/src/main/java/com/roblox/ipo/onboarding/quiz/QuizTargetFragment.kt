@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.roblox.ipo.R
 import com.roblox.ipo.navigation.Coordinator
@@ -15,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_quiz_target.quiz_next_btn
 import kotlinx.android.synthetic.main.fragment_quiz_target.quiz_skip_btn
 import kotlinx.android.synthetic.main.fragment_quiz_target.quiz_step
 import kotlinx.android.synthetic.main.fragment_quiz_tools.*
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -50,5 +53,9 @@ class QuizTargetFragment : Fragment() {
             resources.getStringArray(R.array.text_quiz_target_options)
         )
         quiz_card_input.setAdapter(adapter)
+        quiz_card_input.doOnTextChanged { text, _, _, _ ->
+            quiz_next_btn.isEnabled = quiz_next_btn.text.isNotEmpty()
+        }
+        quiz_next_btn.isEnabled = quiz_next_btn.isSelected
     }
 }

@@ -89,13 +89,13 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="24dp"
-                android:text="@string/hint_quiz_experience"
+                android:text="@string/hint_quiz_risk"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Укажите целевой уровень годовой доходности по портфелю" />
+                tools:text="Укажите уровень риска с которым вы готовы работать" />
 
             <RadioGroup
                 android:id="@+id/quiz_card_risk_group_1"

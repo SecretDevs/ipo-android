@@ -89,7 +89,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="24dp"
-                android:text="@string/hint_quiz_experience"
+                android:text="@string/hint_quiz_profitability"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline3"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_quiz_age.quiz_next_btn
 import kotlinx.android.synthetic.main.fragment_quiz_age.quiz_skip_btn
 import kotlinx.android.synthetic.main.fragment_quiz_age.quiz_step
 import kotlinx.android.synthetic.main.fragment_quiz_tools.*
+import java.lang.NumberFormatException
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -40,8 +41,17 @@ class QuizAgeFragment : Fragment() {
         quiz_next_btn.setOnClickListener {
             coordinator.navigateToQuizFund()
         }
-        quiz_card_input.doOnTextChanged { text, start, before, count ->
-
+        quiz_card_input.doOnTextChanged { text, _, _, _ ->
+            try {
+                quiz_next_btn.isEnabled = Integer.parseInt(text.toString()) >= 18
+            } catch (_: NumberFormatException) {
+                quiz_next_btn.isEnabled = false
+            }
+        }
+        try {
+            quiz_next_btn.isEnabled = Integer.parseInt(quiz_card_input.text.toString()) >= 18
+        } catch (_: NumberFormatException) {
+            quiz_next_btn.isEnabled = false
         }
     }
 }

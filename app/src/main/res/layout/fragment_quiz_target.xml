@@ -99,7 +99,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/quiz_card_input_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Theme.IPO.InputField.Dropdown"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -116,8 +116,8 @@
                     android:id="@+id/quiz_card_input"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/hint_quiz_target_choice"
                     android:inputType="none"
+                    android:hint="@string/hint_quiz_target_choice"
                     tools:hint="Выберите вариант..." />
 
             </com.google.android.material.textfield.TextInputLayout>
