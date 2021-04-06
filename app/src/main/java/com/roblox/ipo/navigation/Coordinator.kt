@@ -3,6 +3,7 @@ package com.roblox.ipo.navigation
 import androidx.fragment.app.FragmentActivity
 import com.roblox.ipo.R
 import com.roblox.ipo.deals.DealsFragment
+import com.roblox.ipo.deals.statistic.StatisticFragment
 import com.roblox.ipo.onboarding.confrimation.ConfirmationFragment
 import com.roblox.ipo.onboarding.login.LoginFragment
 import com.roblox.ipo.onboarding.quiz.*
@@ -22,6 +23,7 @@ interface Coordinator {
     fun navigateToQuizProfitability()
     fun navigateToQuizRisk()
     fun navigateToDeals()
+    fun navigateToStatistic()
     fun start()
     fun pop()
 }
@@ -109,8 +111,15 @@ class CoordinatorImpl @Inject constructor(
             .commitAllowingStateLoss()
     }
 
+    override fun navigateToStatistic() {
+        fragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, StatisticFragment())
+            .addToBackStack("DEALS")
+            .commitAllowingStateLoss()
+    }
+
     override fun start() {
-        navigateToOnboarding()
+        navigateToDeals()
     }
 
     override fun pop() {

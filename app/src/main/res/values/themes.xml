@@ -122,6 +122,12 @@
         <item name="labelVisibilityMode">unlabeled</item>
     </style>
 
+    <style name="Theme.IPO.ChoiceChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/colorChipBackground</item>
+        <item name="shapeAppearance">@style/Theme.Ipo.SmoothCornerView</item>
+        <item name="android:textAppearance">@style/TextAppearance.Theme.Ipo.Paragraph.Bold</item>
+    </style>
+
     <style name="Theme.Ipo.CircleImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>

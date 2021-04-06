@@ -30,6 +30,7 @@ class DealsViewModel @ViewModelInject constructor(
                 }
             }
             DealsAction.NavigateToDealsStatisticAction -> {
+                coordinator.navigateToStatistic()
                 DealsEffect.NothingEffect
             }
         }

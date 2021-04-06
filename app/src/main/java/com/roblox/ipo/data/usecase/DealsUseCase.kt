@@ -13,7 +13,7 @@ interface DealsUseCase {
     fun updateFave(dealId: Long): Result<List<Deal>>
 }
 
-class DealsUseCaseImpl @Inject constructor() : DealsUseCase {
+class FakeDealsUseCase @Inject constructor() : DealsUseCase {
     override fun getFavoriteDeals(): Result<List<Deal>> = Result.Success(
         listOf(
             Deal(

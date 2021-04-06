@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/colorPrimaryBackground">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        style="@style/Theme.Ipo.AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryBackground"
+        android:paddingTop="24dp"
+        app:elevation="0dp">
+
+        <FrameLayout
+            android:id="@+id/appbar_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_arrow_back"
+                style="@style/Theme.Ipo.Button.IconOnly"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="@dimen/margin_default"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                app:icon="@drawable/ic_arrow_back"
+                app:iconTint="@color/colorOnBackgroundMedium" />
+
+            <TextView
+                android:id="@+id/appbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/title_statistic"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline2" />
+
+        </FrameLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/statistic_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <include layout="@layout/fragment_statistic_content"/>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

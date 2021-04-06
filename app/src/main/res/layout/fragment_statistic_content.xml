@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/colorPrimaryBackground">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/statistic_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        app:cardElevation="16dp"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/Theme.Ipo.SmoothCornerView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statistic_card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/statistic_card_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/title_statistic_card"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Paragraph.Bold"
+                android:textColor="@color/colorOnBackgroundMedium"
+                app:layout_constraintEnd_toStartOf="@+id/statistic_card_growth"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Рост портфеля" />
+
+            <TextView
+                android:id="@+id/statistic_card_growth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline2"
+                app:layout_constraintBottom_toBottomOf="@+id/statistic_card_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:text="+74%"
+                tools:textColor="@color/colorGreen" />
+
+            <TextView
+                android:id="@+id/statistic_card_current_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Paragraph"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statistic_card_title"
+                tools:text="$178 841" />
+
+            <com.db.williamchart.view.LineChartView
+                android:id="@+id/statistic_card_chart"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toTopOf="@+id/statistic_card_period"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statistic_card_current_size"
+                app:chart_smoothLine="true"
+                app:chart_lineThickness="4dp"
+                app:chart_lineColor="@color/colorPrimary"
+                app:chart_labelsFont="@font/euclid_square"
+                app:chart_labelsColor="@color/colorOnBackgroundMedium"
+                app:chart_labelsSize="12sp"
+                app:chart_axis="y" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/statistic_card_period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/statistic_card_period_day"
+                    style="@style/Theme.IPO.ChoiceChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_statistic_period_day"
+                    tools:text="День" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/statistic_card_period_week"
+                    style="@style/Theme.IPO.ChoiceChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_statistic_period_week"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Paragraph.Bold"
+                    tools:text="Нед." />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/statistic_card_period_month"
+                    style="@style/Theme.IPO.ChoiceChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_statistic_period_month"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Paragraph.Bold"
+                    tools:text="Мес." />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/statistic_card_period_year"
+                    style="@style/Theme.IPO.ChoiceChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_statistic_period_year"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Paragraph.Bold"
+                    tools:text="Год" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/statistic_card_period_all"
+                    style="@style/Theme.IPO.ChoiceChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_statistic_period_all"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Paragraph.Bold"
+                    tools:text="Все" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statistic_detailed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:paddingBottom="24dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statistic_card"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_portfolio" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

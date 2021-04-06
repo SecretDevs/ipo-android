@@ -88,6 +88,19 @@ locked"</string>
     <string name="text_quiz_tools_check_8">Resources</string>
     <string name="hint_quiz_profitability">Specify the target level of annual return on the portfolio</string>
     <string name="hint_quiz_risk">Indicate the level of risk with which you are willing to work</string>
+    <string name="title_statistic">Statistic</string>
+    <string name="title_statistic_card">Portfolio growth</string>
+    <string name="text_statistic_period_day">Day</string>
+    <string name="text_statistic_period_week">Week</string>
+    <string name="text_statistic_period_month">Month</string>
+    <string name="text_statistic_period_year">Year</string>
+    <string name="text_statistic_period_all">All</string>
+    <string name="text_item_portfolio_header_date">Date</string>
+    <string name="text_item_portfolio_header_name">IPO</string>
+    <string name="text_item_portfolio_header_profit_percent">Profit %</string>
+    <string name="text_item_portfolio_header_profit">Result</string>
+    <string name="text_item_portfolio_profit_percent">%d%%</string>
+    <string name="text_item_portfolio_profit">$%d</string>
     <string-array name="text_quiz_target_options">
         <item>Savings</item>
         <item>Basic income</item>

@@ -21,6 +21,9 @@ class DealsFragment : BaseFragment<DealsViewState, DealsIntent>() {
     override fun initialIntent(): DealsIntent = DealsIntent.LoadDealsOpenStatesIntent
 
     override fun initViews() {
+        btn_statistic.setOnClickListener {
+            _intentLiveData.value = DealsIntent.OpenDealsStatisticIntent
+        }
         fragmentAdapter = DealsFragmentAdapter(this)
         viewpager.adapter = fragmentAdapter
         TabLayoutMediator(tabs_layout, viewpager) { tab, position ->

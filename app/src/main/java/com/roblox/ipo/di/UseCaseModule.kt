@@ -1,12 +1,8 @@
 package com.roblox.ipo.di
 
-import com.roblox.ipo.data.usecase.AuthUseCase
-import com.roblox.ipo.data.usecase.AuthUseCaseImpl
-import com.roblox.ipo.data.usecase.DealsUseCase
-import com.roblox.ipo.data.usecase.DealsUseCaseImpl
+import com.roblox.ipo.data.usecase.*
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 
@@ -15,12 +11,17 @@ import dagger.hilt.android.components.ActivityComponent
 abstract class UseCaseModule {
     @Binds
     abstract fun bindDealsUseCase(
-        dealsUseCaseImpl: DealsUseCaseImpl
+        dealsUseCaseImpl: FakeDealsUseCase
     ): DealsUseCase
 
     @Binds
     abstract fun bindAuthUseCase(
         authUseCaseImpl: AuthUseCaseImpl
     ): AuthUseCase
+
+    @Binds
+    abstract fun bindStatisticUseCase(
+        statisticUseCase: FakeStatisticUseCase
+    ): StatisticUseCase
 
 }
