@@ -101,6 +101,8 @@ locked"</string>
     <string name="text_item_portfolio_header_profit">Result</string>
     <string name="text_item_portfolio_profit_percent">%d%%</string>
     <string name="text_item_portfolio_profit">$%d</string>
+    <string name="text_btn_payment">Pay</string>
+    <string name="text_payment_amount_text">Amount to be paid</string>
     <string-array name="text_quiz_target_options">
         <item>Savings</item>
         <item>Basic income</item>

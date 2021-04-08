@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/colorPrimaryBackground">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        style="@style/Theme.Ipo.AppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryBackground"
+        android:paddingTop="24dp"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/appbar_title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_arrow_back"
+                style="@style/Theme.Ipo.Button.IconOnly"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="@dimen/margin_default"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                app:icon="@drawable/ic_arrow_back"
+                app:iconTint="@color/colorOnBackgroundMedium" />
+
+            <TextView
+                android:id="@+id/appbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline2"
+                tools:text="Покупка доступа" />
+
+        </FrameLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/payment_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:shapeAppearance="@style/Theme.Ipo.SmoothCornerView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/payment_card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/payment_card_layout_card_number_layout"
+                style="@style/Theme.IPO.InputField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/Theme.Ipo.LightCornerView">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/payment_card_layout_card_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Card number"
+                    android:inputType="number"
+                    tools:hint="Номер карты" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/payment_card_layout_card_holder_layout"
+                style="@style/Theme.IPO.InputField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/payment_card_layout_card_number_layout"
+                app:shapeAppearance="@style/Theme.Ipo.LightCornerView">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/payment_card_layout_card_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Card holder name"
+                    android:inputType="text"
+                    tools:hint="Имя держателя карты" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/payment_card_layout_card_expire_layout"
+                style="@style/Theme.IPO.InputField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/payment_card_layout_card_holder_layout"
+                app:shapeAppearance="@style/Theme.Ipo.LightCornerView">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/payment_card_layout_card_expire"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Card holder name"
+                    android:inputType="date"
+                    tools:hint="Имя держателя карты" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/payment_card_layout_card_cvv_layout"
+                style="@style/Theme.IPO.InputField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/payment_card_layout_card_holder_layout"
+                app:shapeAppearance="@style/Theme.Ipo.LightCornerView">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/payment_card_layout_card_cvv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="CVV"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/payment_amount_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/text_payment_amount_text"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.Login"
+        android:textColor="@color/colorOnBackgroundMedium"
+        app:layout_constraintBottom_toTopOf="@+id/payment_with_card_btn"
+        app:layout_constraintEnd_toStartOf="@+id/payment_amount_value"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Сумма к оплате" />
+
+    <TextView
+        android:id="@+id/payment_amount_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.Headline3"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/payment_with_google_pay_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/payment_amount_text"
+        tools:text="12 000 ₽" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/payment_with_card_btn"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:text="@string/text_btn_payment"
+        android:textAppearance="@style/TextAppearance.Theme.Ipo.Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearance="@style/Theme.Ipo.SmoothCornerView"
+        tools:text="Оплатить" />
+
+    <include
+        android:id="@+id/payment_with_google_pay_btn"
+        layout="@layout/buy_with_googlepay_button"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
