@@ -103,6 +103,17 @@ locked"</string>
     <string name="text_item_portfolio_profit">$%d</string>
     <string name="text_btn_payment">Pay</string>
     <string name="text_payment_amount_text">Amount to be paid</string>
+    <string name="title_payment">Purchasing %s</string>
+    <string name="title_payment_section">a section</string>
+    <string name="title_payment_course">a course</string>
+    <string name="hint_payment_card_date">Date</string>
+    <string name="hint_payment_card_name">Name on card</string>
+    <string name="hint_payment_card_number">Card number</string>
+    <string name="hint_payment_card_cvv">CVV</string>
+    <string name="text_btn_payment_status_ok">Good!</string>
+    <string name="text_btn_payment_status_error">Retry</string>
+    <string name="text_payment_status_ok">Payment was successful!</string>
+    <string name="text_payment_status_error">Payment error occured!</string>
     <string-array name="text_quiz_target_options">
         <item>Savings</item>
         <item>Basic income</item>

@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:background="@color/colorPrimaryBackground">
 
+    <include android:id="@+id/status_ok"
+        layout="@layout/fragment_payment_ok"/>
+
+    <include android:id="@+id/status_error"
+        layout="@layout/fragment_payment_error"/>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         style="@style/Theme.Ipo.AppBar"
@@ -83,7 +89,8 @@
                     android:id="@+id/payment_card_layout_card_number"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Card number"
+                    android:hint="@string/hint_payment_card_number"
+                    android:autofillHints="creditCardNumber"
                     android:inputType="number"
                     tools:hint="Номер карты" />
 
@@ -106,8 +113,9 @@
                     android:id="@+id/payment_card_layout_card_holder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Card holder name"
-                    android:inputType="text"
+                    android:hint="@string/hint_payment_card_name"
+                    android:inputType="textPersonName"
+                    android:autofillHints="personName"
                     tools:hint="Имя держателя карты" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -131,8 +139,9 @@
                     android:id="@+id/payment_card_layout_card_expire"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Card holder name"
+                    android:hint="@string/hint_payment_card_date"
                     android:inputType="date"
+                    android:autofillHints="creditCardExpirationDate"
                     tools:hint="Имя держателя карты" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -156,7 +165,8 @@
                     android:id="@+id/payment_card_layout_card_cvv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="CVV"
+                    android:hint="@string/hint_payment_card_cvv"
+                    android:autofillHints="creditCardSecurityCode"
                     android:inputType="number"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -217,7 +227,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:shapeAppearance="@style/Theme.Ipo.SmoothCornerView"
         tools:text="Оплатить" />
 
     <include

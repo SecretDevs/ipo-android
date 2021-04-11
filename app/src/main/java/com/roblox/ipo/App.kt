@@ -13,9 +13,9 @@ class App : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
-        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+        FirebaseMessaging.getInstance().subscribeToTopic("IPO").addOnCompleteListener {
             it.let {
-                Timber.d(it.result)
+                Timber.d("all good")
             }
         }
     }

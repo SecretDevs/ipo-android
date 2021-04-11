@@ -9,6 +9,7 @@ import com.roblox.ipo.onboarding.login.LoginFragment
 import com.roblox.ipo.onboarding.quiz.*
 import com.roblox.ipo.onboarding.quiz.risk.QuizRiskFragment
 import com.roblox.ipo.onboarding.welcome.WelcomeFragment
+import com.roblox.ipo.payment.PaymentFragment
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
@@ -25,6 +26,7 @@ interface Coordinator {
     fun navigateToQuizRisk()
     fun navigateToDeals()
     fun navigateToStatistic()
+    fun navigateToPayment(paymentType: Int, paymentAmount: Int)
     fun start()
     fun pop()
 }
@@ -119,8 +121,18 @@ class CoordinatorImpl @Inject constructor(
             .commitAllowingStateLoss()
     }
 
+    override fun navigateToPayment(paymentType: Int, paymentAmount: Int) {
+        fragmentManager.beginTransaction()
+            .replace(
+                R.id.fragment_container,
+                PaymentFragment.newInstance(paymentType, paymentAmount)
+            )
+            .addToBackStack("DEALS")
+            .commitAllowingStateLoss()
+    }
+
     override fun start() {
-        navigateToConfirmation()
+        navigateToDeals()
     }
 
     override fun pop() {
