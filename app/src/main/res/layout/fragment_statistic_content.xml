@@ -76,7 +76,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/statistic_card_current_size"
-                app:chart_smoothLine="true"
                 app:chart_lineThickness="4dp"
                 app:chart_lineColor="@color/colorPrimary"
                 app:chart_labelsFont="@font/euclid_square"

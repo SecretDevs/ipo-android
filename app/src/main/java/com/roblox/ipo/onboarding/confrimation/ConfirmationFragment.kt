@@ -26,7 +26,7 @@ class ConfirmationFragment : BaseFragment<ConfirmationViewState, ConfirmationInt
         }
         login_confirmation_resend_code.setOnClickListener {
             _intentLiveData.value = ConfirmationIntent.ResendCodeIntent
-            _intentLiveData.value = ConfirmationIntent.ValidateConfirmationCodeIntent("4444")
+            _intentLiveData.value = ConfirmationIntent.ValidateConfirmationCodeIntent("1234")
         }
 
     }

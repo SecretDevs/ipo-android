@@ -10,14 +10,19 @@ import kotlinx.android.synthetic.main.item_deal.view.*
 
 class DealViewHolder(
     private val root: View,
-    onClick: (Long) -> Unit,
-    onFaveClick: (Long) -> Unit
+    onClick: (String) -> Unit,
+    onFaveClick: (String, Boolean) -> Unit
 ) : DataViewHolder<Deal>(root) {
     private lateinit var deal: Deal
 
     init {
-        root.setOnClickListener { onClick(deal.id) }
-        root.item_deal_favorite_btn.setOnClickListener { onFaveClick(deal.id) }
+        root.setOnClickListener { onClick(deal.id ?: "") }
+        root.item_deal_favorite_btn.setOnCheckedChangeListener { _, isChecked ->
+            onFaveClick(
+                deal.id ?: "",
+                isChecked
+            )
+        }
     }
 
     override fun bindData(data: Deal) {
@@ -33,12 +38,12 @@ class DealViewHolder(
             R.string.text_deal_date,
             DateUtils.formatDateTime(
                 root.context,
-                data.date,
+                data.createdTime,
                 DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_NUMERIC_DATE
             ),
             DateUtils.formatDateTime(
                 root.context,
-                data.date,
+                data.createdTime,
                 DateUtils.FORMAT_SHOW_TIME or DateUtils.FORMAT_NUMERIC_DATE
             )
         )
@@ -47,17 +52,33 @@ class DealViewHolder(
         when (data.state) {
             1 -> {
                 root.item_deal_state.text = root.resources.getString(R.string.text_chip_open_deal)
-                root.item_deal_state.setTextColor(ContextCompat.getColor(root.context, R.color.colorChipTextDealOpen))
+                root.item_deal_state.setTextColor(
+                    ContextCompat.getColor(
+                        root.context,
+                        R.color.colorChipTextDealOpen
+                    )
+                )
                 root.item_deal_state.setChipBackgroundColorResource(R.color.colorChipBackgroundDealOpen)
             }
             2 -> {
-                root.item_deal_state.text = root.resources.getString(R.string.text_chip_averaged_deal)
-                root.item_deal_state.setTextColor(ContextCompat.getColor(root.context, R.color.colorChipTextDealAveraged))
+                root.item_deal_state.text =
+                    root.resources.getString(R.string.text_chip_averaged_deal)
+                root.item_deal_state.setTextColor(
+                    ContextCompat.getColor(
+                        root.context,
+                        R.color.colorChipTextDealAveraged
+                    )
+                )
                 root.item_deal_state.setChipBackgroundColorResource(R.color.colorChipBackgroundDealAveraged)
             }
             3 -> {
                 root.item_deal_state.text = root.resources.getString(R.string.text_chip_closed_deal)
-                root.item_deal_state.setTextColor(ContextCompat.getColor(root.context, R.color.colorChipTextDealClosed))
+                root.item_deal_state.setTextColor(
+                    ContextCompat.getColor(
+                        root.context,
+                        R.color.colorChipTextDealClosed
+                    )
+                )
                 root.item_deal_state.setChipBackgroundColorResource(R.color.colorChipBackgroundDealClosed)
             }
         }

@@ -10,13 +10,18 @@ sealed class IpoDealsIntent : MviIntent {
     object RetryDealsLoadingIntent : IpoDealsIntent()
 
     data class OpenDealDetailsIntent(
-        val dealId: Long
+        val dealId: String
     ) : IpoDealsIntent()
 
     data class ToggleDealFaveIntent(
-        val dealId: Long
+        val dealId: String,
+        val newState: Boolean
     ) : IpoDealsIntent()
 
     object FavoriteDealsNothingIntent : IpoDealsIntent(), NothingIntent
+
+    object PagingDealsLoadingIntent : IpoDealsIntent()
+
+    object RetryPagingDealsLoadingIntent : IpoDealsIntent()
 
 }

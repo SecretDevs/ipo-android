@@ -15,6 +15,16 @@ sealed class IpoDealsEffect : MviEffect {
         val deals: List<Deal>
     ) : IpoDealsEffect()
 
-    object NohtingEffect : IpoDealsEffect()
+    object NothingEffect : IpoDealsEffect()
+
+    object PagingLoadingEffect : IpoDealsEffect()
+
+    data class PagingLoadingErrorEffect(
+        val error: Throwable
+    ) : IpoDealsEffect()
+
+    data class PagingDealsLoadedEffect(
+        val deals: List<Deal>
+    ) : IpoDealsEffect()
 
 }

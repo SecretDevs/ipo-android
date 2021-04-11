@@ -14,6 +14,7 @@ import com.roblox.ipo.navigation.Coordinator
 import com.roblox.ipo.onboarding.confrimation.ConfirmationFragment
 import com.roblox.ipo.onboarding.login.LoginFragment
 import com.roblox.ipo.onboarding.quiz.*
+import com.roblox.ipo.onboarding.quiz.risk.QuizRiskFragment
 import com.roblox.ipo.onboarding.welcome.WelcomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*

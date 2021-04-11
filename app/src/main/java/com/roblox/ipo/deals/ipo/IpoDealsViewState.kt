@@ -6,6 +6,8 @@ import com.roblox.ipo.vo.inapp.Deal
 data class IpoDealsViewState(
     val isInitialLoading: Boolean,
     val initialError: Throwable?,
+    val isPagingLoading: Boolean,
+    val pagingError: Throwable?,
     val deals: List<Deal>
 ) : MviViewState {
     override fun log(): String = this.toString()
@@ -15,24 +17,51 @@ data class IpoDealsViewState(
         val initialState = IpoDealsViewState(
             isInitialLoading = false,
             initialError = null,
+            isPagingLoading = false,
+            pagingError = null,
             deals = emptyList()
         )
 
         val initialLoadingState = IpoDealsViewState(
             isInitialLoading = true,
             initialError = null,
+            isPagingLoading = false,
+            pagingError = null,
             deals = emptyList()
         )
 
         fun loadingErrorState(error: Throwable?) = IpoDealsViewState(
             isInitialLoading = false,
             initialError = error,
+            isPagingLoading = false,
+            pagingError = null,
             deals = emptyList()
         )
 
         fun dealsLoadedState(deals: List<Deal>) = IpoDealsViewState(
             isInitialLoading = false,
             initialError = null,
+            isPagingLoading = false,
+            pagingError = null,
+            deals = deals
+        )
+
+        fun dealsPagingLoadingState(deals: List<Deal>) = IpoDealsViewState(
+            isInitialLoading = false,
+            initialError = null,
+            isPagingLoading = true,
+            pagingError = null,
+            deals = deals
+        )
+
+        fun dealsPagingErrorLoadingState(
+            deals: List<Deal>,
+            pagingError: Throwable
+        ) = IpoDealsViewState(
+            isInitialLoading = false,
+            initialError = null,
+            isPagingLoading = false,
+            pagingError = pagingError,
             deals = deals
         )
 

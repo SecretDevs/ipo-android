@@ -4,6 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import com.roblox.ipo.base.BaseViewModel
 import com.roblox.ipo.data.usecase.AuthUseCase
 import com.roblox.ipo.navigation.Coordinator
+import com.roblox.ipo.vo.inapp.Result
 
 class ConfirmationViewModel @ViewModelInject constructor(
     private val coordinator: Coordinator,
@@ -40,10 +41,11 @@ class ConfirmationViewModel @ViewModelInject constructor(
                 ConfirmationEffect.NothingEffect
             }
             is ConfirmationAction.ValidateCodeAction -> {
-                when {
-                    action.code == "4444" -> ConfirmationEffect.CorrectCodeEffect
-                    action.code.length == 4 -> ConfirmationEffect.WrongCodeEffect
-                    else -> ConfirmationEffect.NothingEffect
+                when (val result = authUseCase.checkRequestedCode(action.code)) {
+                    is Result.Error -> ConfirmationEffect.WrongCodeEffect
+                    is Result.Success ->
+                        if (result.data) ConfirmationEffect.CorrectCodeEffect
+                        else ConfirmationEffect.WrongCodeEffect
                 }
             }
         }

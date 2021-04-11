@@ -6,12 +6,15 @@ sealed class SpacDealsAction : MviAction {
 
     object LoadDealsAction : SpacDealsAction()
 
+    object PagingLoadDealsAction : SpacDealsAction()
+
     data class NavigateToDealDetails(
-        val dealId: Long
+        val dealId: String
     ) : SpacDealsAction()
 
     data class ToggleDealFaveAction(
-        val dealId: Long
+        val dealId: String,
+        val newState: Boolean
     ) : SpacDealsAction()
 
 }

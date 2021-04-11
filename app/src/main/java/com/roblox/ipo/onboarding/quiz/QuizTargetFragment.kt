@@ -4,26 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.roblox.ipo.R
+import com.roblox.ipo.data.usecase.QuizUseCase
 import com.roblox.ipo.navigation.Coordinator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_quiz_target.*
-import kotlinx.android.synthetic.main.fragment_quiz_target.btn_arrow_back
-import kotlinx.android.synthetic.main.fragment_quiz_target.quiz_next_btn
-import kotlinx.android.synthetic.main.fragment_quiz_target.quiz_skip_btn
-import kotlinx.android.synthetic.main.fragment_quiz_target.quiz_step
-import kotlinx.android.synthetic.main.fragment_quiz_tools.*
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class QuizTargetFragment : Fragment() {
     @Inject
     lateinit var coordinator: Coordinator
+
+    @Inject
+    lateinit var quizUseCase: QuizUseCase
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,9 +39,14 @@ class QuizTargetFragment : Fragment() {
             coordinator.pop()
         }
         quiz_next_btn.setOnClickListener {
+            quizUseCase.saveTarget(
+                resources.getStringArray(R.array.text_quiz_target_options)
+                    .indexOf(quiz_card_input.text.toString())
+            )
             coordinator.navigateToQuizProfitability()
         }
         quiz_skip_btn.setOnClickListener {
+            quizUseCase.clear()
             coordinator.navigateToDeals()
         }
         val adapter = ArrayAdapter(

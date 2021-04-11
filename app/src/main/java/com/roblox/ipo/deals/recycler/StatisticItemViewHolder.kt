@@ -5,14 +5,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.ConfigurationCompat
 import com.roblox.ipo.R
 import com.roblox.ipo.base.recycler.DataViewHolder
-import com.roblox.ipo.vo.inapp.IpoResult
+import com.roblox.ipo.vo.inapp.Statistic
 import kotlinx.android.synthetic.main.item_portfolio.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class StatisticItemViewHolder(
     private val root: View
-) : DataViewHolder<IpoResult>(root) {
+) : DataViewHolder<Statistic>(root) {
 
     init {
         if (formatter == null) {
@@ -23,7 +23,7 @@ class StatisticItemViewHolder(
         }
     }
 
-    override fun bindData(data: IpoResult) {
+    override fun bindData(data: Statistic) {
         root.item_portfolio_date.text =
             formatter?.format(Date(data.date))
         root.item_portfolio_name.text = data.name

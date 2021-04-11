@@ -4,9 +4,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.roblox.ipo.R
 import com.roblox.ipo.base.BaseFragment
-import com.roblox.ipo.base.recycler.RecyclerState
+import com.roblox.ipo.base.recycler.RecyclerEndlessState
 import com.roblox.ipo.deals.recycler.DealsAdapter
 import com.roblox.ipo.deals.recycler.DealsItemDecoration
+import com.roblox.ipo.deals.recycler.OffsetScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_deals_list.*
 
@@ -27,8 +28,12 @@ class FavoriteDealsFragment : BaseFragment<FavoriteDealsViewState, FavoriteDeals
     override fun initViews() {
         adapter = DealsAdapter(
             onClick = { _intentLiveData.value = FavoriteDealsIntent.OpenDealDetailsIntent(it) },
-            onFaveClick = { _intentLiveData.value = FavoriteDealsIntent.ToggleDealFaveIntent(it) },
-            onRetry = { _intentLiveData.value = FavoriteDealsIntent.RetryDealsLoadingIntent }
+            onFaveClick = { id, state ->
+                _intentLiveData.value = FavoriteDealsIntent.ToggleDealFaveIntent(id, state) },
+            onRetry = { _intentLiveData.value = FavoriteDealsIntent.RetryDealsLoadingIntent },
+            onPagingRetry = {
+                _intentLiveData.value = FavoriteDealsIntent.RetryPagingDealsLoadingIntent
+            }
         )
         deals_recycler.adapter = adapter
         deals_recycler.layoutManager =
@@ -40,14 +45,25 @@ class FavoriteDealsFragment : BaseFragment<FavoriteDealsViewState, FavoriteDeals
                 )
             )
         )
+        deals_recycler.addOnScrollListener(
+            OffsetScrollListener(
+                mLayoutManager = deals_recycler.layoutManager as LinearLayoutManager,
+                mOffset = 3,
+                offsetListener = {
+                    _intentLiveData.value = FavoriteDealsIntent.PagingDealsLoadingIntent
+                }
+            )
+        )
     }
 
     override fun render(viewState: FavoriteDealsViewState) {
         val state = when {
-            viewState.isInitialLoading -> RecyclerState.LOADING
-            viewState.initialError != null -> RecyclerState.ERROR
-            viewState.deals.isEmpty() -> RecyclerState.EMPTY
-            else -> RecyclerState.ITEM
+            viewState.isInitialLoading -> RecyclerEndlessState.LOADING
+            viewState.initialError != null -> RecyclerEndlessState.ERROR
+            viewState.isPagingLoading -> RecyclerEndlessState.PAGING_LOADING
+            viewState.pagingError != null -> RecyclerEndlessState.PAGING_ERROR
+            viewState.deals.isEmpty() -> RecyclerEndlessState.EMPTY
+            else -> RecyclerEndlessState.ITEM
         }
         adapter.updateData(viewState.deals, state)
     }

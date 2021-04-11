@@ -3,12 +3,10 @@ package com.roblox.ipo.deals.favorite
 import androidx.hilt.lifecycle.ViewModelInject
 import com.roblox.ipo.base.BaseViewModel
 import com.roblox.ipo.data.usecase.DealsUseCase
-import com.roblox.ipo.navigation.Coordinator
 import com.roblox.ipo.vo.inapp.Result
 
 class FavoriteDealsViewModel @ViewModelInject constructor(
-    private val dealsUseCase: DealsUseCase,
-    private val coordinator: Coordinator
+    private val dealsUseCase: DealsUseCase
 ) : BaseViewModel<FavoriteDealsViewState, FavoriteDealsEffect, FavoriteDealsIntent, FavoriteDealsAction>() {
     override fun initialState(): FavoriteDealsViewState = FavoriteDealsViewState.initialState
 
@@ -20,16 +18,19 @@ class FavoriteDealsViewModel @ViewModelInject constructor(
             )
             FavoriteDealsIntent.RetryDealsLoadingIntent -> FavoriteDealsAction.LoadDealsAction
             is FavoriteDealsIntent.ToggleDealFaveIntent -> FavoriteDealsAction.ToggleDealFaveAction(
-                intent.dealId
+                intent.dealId,
+                intent.newState
             )
             FavoriteDealsIntent.FavoriteDealsNothingIntent -> throw IllegalArgumentException("Nothing intent interpreting")
+            FavoriteDealsIntent.PagingDealsLoadingIntent -> FavoriteDealsAction.PagingLoadDealsAction
+            FavoriteDealsIntent.RetryPagingDealsLoadingIntent -> FavoriteDealsAction.PagingLoadDealsAction
         }
 
     override suspend fun performAction(action: FavoriteDealsAction): FavoriteDealsEffect =
         when (action) {
             FavoriteDealsAction.LoadDealsAction -> {
                 addIntermediateEffect(FavoriteDealsEffect.InitialLoadingEffect)
-                when (val result = dealsUseCase.getFavoriteDeals()) {
+                when (val result = dealsUseCase.getFavoriteDeals(null)) {
                     is Result.Error -> FavoriteDealsEffect.InitialLoadingErrorEffect(result.throwable)
                     is Result.Success -> FavoriteDealsEffect.DealsLoadedEffect(result.data)
                 }
@@ -38,9 +39,20 @@ class FavoriteDealsViewModel @ViewModelInject constructor(
                 FavoriteDealsEffect.NothingEffect
             }
             is FavoriteDealsAction.ToggleDealFaveAction -> {
-                when (val result = dealsUseCase.updateFave(action.dealId)) {
+                val result =
+                    if (action.newState) dealsUseCase.addFave(action.dealId)
+                    else dealsUseCase.removeFave(action.dealId)
+                when (result) {
                     is Result.Error -> FavoriteDealsEffect.NothingEffect
                     is Result.Success -> FavoriteDealsEffect.NothingEffect
+                }
+            }
+            FavoriteDealsAction.PagingLoadDealsAction -> {
+                addIntermediateEffect(FavoriteDealsEffect.PagingLoadingEffect)
+                when (val result =
+                    dealsUseCase.getFavoriteDeals(viewStateLiveData.value!!.deals.last().updatedTime)) {
+                    is Result.Error -> FavoriteDealsEffect.PagingLoadingErrorEffect(result.throwable)
+                    is Result.Success -> FavoriteDealsEffect.PagingDealsLoadedEffect(result.data)
                 }
             }
         }
@@ -58,5 +70,15 @@ class FavoriteDealsViewModel @ViewModelInject constructor(
                 effect.error
             )
             FavoriteDealsEffect.NothingEffect -> oldState
+            is FavoriteDealsEffect.PagingDealsLoadedEffect -> FavoriteDealsViewState.dealsLoadedState(
+                oldState.deals + effect.deals
+            )
+            FavoriteDealsEffect.PagingLoadingEffect -> FavoriteDealsViewState.dealsPagingLoadingState(
+                oldState.deals
+            )
+            is FavoriteDealsEffect.PagingLoadingErrorEffect -> FavoriteDealsViewState.dealsPagingErrorLoadingState(
+                oldState.deals,
+                effect.error
+            )
         }
 }

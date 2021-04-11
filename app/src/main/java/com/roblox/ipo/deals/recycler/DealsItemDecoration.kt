@@ -14,13 +14,14 @@ class DealsItemDecoration(
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        val position = parent.getChildAdapterPosition(view)
-        outRect.set(
-            margin,
-            margin / 2,
-            margin,
-            margin / 2,
-        )
+        if (view.tag == "item") {
+            outRect.set(
+                margin,
+                margin / 2,
+                margin,
+                margin / 2,
+            )
+        }
     }
 
 }

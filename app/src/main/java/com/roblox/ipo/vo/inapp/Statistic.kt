@@ -1,8 +1,8 @@
 package com.roblox.ipo.vo.inapp
 
-data class IpoResult(
+data class Statistic(
     val date: Long,
     val name: String,
-    val profit: Int,
-    val profitPercent: Int
+    val profit: Long,
+    val profitPercent: Long
 )

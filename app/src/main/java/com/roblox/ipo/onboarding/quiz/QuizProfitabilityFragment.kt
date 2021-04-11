@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.roblox.ipo.R
+import com.roblox.ipo.data.usecase.QuizUseCase
 import com.roblox.ipo.navigation.Coordinator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_quiz_profitability.*
@@ -15,6 +16,9 @@ import javax.inject.Inject
 class QuizProfitabilityFragment : Fragment() {
     @Inject
     lateinit var coordinator: Coordinator
+
+    @Inject
+    lateinit var quizUseCase: QuizUseCase
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,9 +37,18 @@ class QuizProfitabilityFragment : Fragment() {
             coordinator.pop()
         }
         quiz_next_btn.setOnClickListener {
+            quizUseCase.saveProfitability(
+                idToSavingMapping[
+                        Math.max(
+                            quiz_card_profitablity_group_1.checkedRadioButtonId,
+                            quiz_card_profitablity_group_2.checkedRadioButtonId
+                        )
+                ] ?: 0
+            )
             coordinator.navigateToQuizRisk()
         }
         quiz_skip_btn.setOnClickListener {
+            quizUseCase.clear()
             coordinator.navigateToDeals()
         }
         var isCascade = false
@@ -63,5 +76,15 @@ class QuizProfitabilityFragment : Fragment() {
             quiz_card_profitablity_group_1.checkedRadioButtonId,
             quiz_card_profitablity_group_2.checkedRadioButtonId
         ) != -1
+    }
+
+    companion object {
+        private val idToSavingMapping = mapOf(
+            R.id.quiz_card_profitablity_1 to 0,
+            R.id.quiz_card_profitablity_2 to 1,
+            R.id.quiz_card_profitablity_3 to 2,
+            R.id.quiz_card_profitablity_5 to 3,
+            R.id.quiz_card_profitablity_6 to 4
+        )
     }
 }

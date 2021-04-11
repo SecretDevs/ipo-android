@@ -4,9 +4,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.roblox.ipo.R
 import com.roblox.ipo.base.BaseFragment
-import com.roblox.ipo.base.recycler.RecyclerState
+import com.roblox.ipo.base.recycler.RecyclerEndlessState
 import com.roblox.ipo.deals.recycler.DealsAdapter
 import com.roblox.ipo.deals.recycler.DealsItemDecoration
+import com.roblox.ipo.deals.recycler.OffsetScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_deals_list.*
 
@@ -27,8 +28,11 @@ class IpoDealsFragment : BaseFragment<IpoDealsViewState, IpoDealsIntent>() {
     override fun initViews() {
         adapter = DealsAdapter(
             onClick = { _intentLiveData.value = IpoDealsIntent.OpenDealDetailsIntent(it) },
-            onFaveClick = { _intentLiveData.value = IpoDealsIntent.ToggleDealFaveIntent(it) },
-            onRetry = { _intentLiveData.value = IpoDealsIntent.RetryDealsLoadingIntent }
+            onFaveClick = { id, state ->
+                _intentLiveData.value = IpoDealsIntent.ToggleDealFaveIntent(id, state)
+            },
+            onRetry = { _intentLiveData.value = IpoDealsIntent.RetryDealsLoadingIntent },
+            onPagingRetry = { _intentLiveData.value = IpoDealsIntent.RetryPagingDealsLoadingIntent }
         )
         deals_recycler.adapter = adapter
         deals_recycler.layoutManager =
@@ -40,14 +44,21 @@ class IpoDealsFragment : BaseFragment<IpoDealsViewState, IpoDealsIntent>() {
                 )
             )
         )
+        deals_recycler.addOnScrollListener(OffsetScrollListener(
+            deals_recycler.layoutManager as LinearLayoutManager,
+            3,
+            { _intentLiveData.value = IpoDealsIntent.PagingDealsLoadingIntent }
+        ))
     }
 
     override fun render(viewState: IpoDealsViewState) {
         val state = when {
-            viewState.isInitialLoading -> RecyclerState.LOADING
-            viewState.initialError != null -> RecyclerState.ERROR
-            viewState.deals.isEmpty() -> RecyclerState.EMPTY
-            else -> RecyclerState.ITEM
+            viewState.isInitialLoading -> RecyclerEndlessState.LOADING
+            viewState.initialError != null -> RecyclerEndlessState.ERROR
+            viewState.isPagingLoading -> RecyclerEndlessState.PAGING_LOADING
+            viewState.pagingError != null -> RecyclerEndlessState.PAGING_ERROR
+            viewState.deals.isEmpty() -> RecyclerEndlessState.EMPTY
+            else -> RecyclerEndlessState.ITEM
         }
         adapter.updateData(viewState.deals, state)
     }

@@ -24,7 +24,7 @@
     <string name="text_medium_risk_deal">Medium risk</string>
     <string name="text_high_risk_deal">High risk</string>
 
-    <string name="text_deal_number">#%d</string>
+    <string name="text_deal_number">#%s</string>
     <string name="text_deal_date">%s • %s</string>
 
     <string name="text_btn_deal_statistic">Statistic</string>

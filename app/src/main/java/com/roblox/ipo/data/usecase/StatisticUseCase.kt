@@ -1,20 +1,37 @@
 package com.roblox.ipo.data.usecase
 
-import com.roblox.ipo.vo.inapp.IpoResult
-import com.roblox.ipo.vo.inapp.Portfolio
+import com.roblox.ipo.data.remote.IpoApiService
+import com.roblox.ipo.vo.inapp.Statistic
+import com.roblox.ipo.vo.inapp.Stats
 import com.roblox.ipo.vo.inapp.Result
+import com.roblox.ipo.vo.mapper.StatsMapper
 import javax.inject.Inject
 
 interface StatisticUseCase {
-    fun getPortfolio(): Result<Portfolio>
+    suspend fun getPortfolio(): Result<Stats>
+}
+
+class StatisticUseCaseImpl @Inject constructor(
+    private val apiService: IpoApiService,
+    private val authUseCase: AuthUseCase,
+    private val statsMapper: StatsMapper
+) : StatisticUseCase {
+    override suspend fun getPortfolio(): Result<Stats> {
+        val response = apiService.getStatistic(authUseCase.getUserToken())
+        return if (response.isSuccessful && response.body() != null) {
+            Result.Success(statsMapper.fromRemoteToInapp(response.body()!!))
+        } else {
+            Result.Error(Throwable(response.message()))
+        }
+    }
 }
 
 class FakeStatisticUseCase @Inject constructor(
 
 ) : StatisticUseCase {
 
-    override fun getPortfolio(): Result<Portfolio> = Result.Success(
-        Portfolio(
+    override suspend fun getPortfolio(): Result<Stats> = Result.Success(
+        Stats(
             profitPercent = 74,
             totalProfit = 178841,
             data = listOf(
@@ -38,61 +55,61 @@ class FakeStatisticUseCase @Inject constructor(
                 178841
             ),
             portfolioItems = listOf(
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "Levi's",
                     profitPercent = 26,
                     profit = 14090
                 ),
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "Lyft",
                     profitPercent = -14,
                     profit = -8090
                 ),
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "Pager Duty",
                     profitPercent = 0,
                     profit = 0
                 ),
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "Zoom",
                     profitPercent = 174,
                     profit = 481082
                 ),
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "RealReal",
                     profitPercent = -21,
                     profit = -81774
                 ),
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "Health Catalyst",
                     profitPercent = 68,
                     profit = 40090
                 ),
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "DataDog",
                     profitPercent = 41,
                     profit = 14045
                 ),
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "Buble",
                     profitPercent = 74,
                     profit = 78090
                 ),
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "Nike",
                     profitPercent = 67,
                     profit = 1600090
                 ),
-                IpoResult(
+                Statistic(
                     date = 1614577752,
                     name = "British Petrolium",
                     profitPercent = -28,

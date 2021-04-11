@@ -10,11 +10,16 @@ sealed class FavoriteDealsIntent : MviIntent {
     object RetryDealsLoadingIntent : FavoriteDealsIntent()
 
     data class OpenDealDetailsIntent(
-        val dealId: Long
+        val dealId: String
     ) : FavoriteDealsIntent()
 
+    object PagingDealsLoadingIntent : FavoriteDealsIntent()
+
+    object RetryPagingDealsLoadingIntent : FavoriteDealsIntent()
+
     data class ToggleDealFaveIntent(
-        val dealId: Long
+        val dealId: String,
+        val newState: Boolean
     ) : FavoriteDealsIntent()
 
     object FavoriteDealsNothingIntent : FavoriteDealsIntent(), NothingIntent

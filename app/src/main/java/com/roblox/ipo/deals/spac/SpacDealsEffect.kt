@@ -17,4 +17,15 @@ sealed class SpacDealsEffect : MviEffect {
 
     object NothingEffect : SpacDealsEffect()
 
+    object PagingLoadingEffect : SpacDealsEffect()
+
+    data class PagingLoadingErrorEffect(
+        val error: Throwable
+    ) : SpacDealsEffect()
+
+    data class PagingDealsLoadedEffect(
+        val deals: List<Deal>
+    ) : SpacDealsEffect()
+
+
 }

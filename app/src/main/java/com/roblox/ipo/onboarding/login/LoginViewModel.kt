@@ -4,6 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import com.roblox.ipo.base.BaseViewModel
 import com.roblox.ipo.data.usecase.AuthUseCase
 import com.roblox.ipo.navigation.Coordinator
+import com.roblox.ipo.vo.inapp.Result
 
 class LoginViewModel @ViewModelInject constructor(
     private val coordinator: Coordinator,
@@ -37,8 +38,16 @@ class LoginViewModel @ViewModelInject constructor(
             }
             is LoginAction.NavigateToConfirmationAction -> {
                 authUseCase.saveUserPhoneNumber(action.phone)
-                coordinator.navigateToConfirmation()
-                LoginEffect.NothingEffect
+                when (val result = authUseCase.requestCodeForPhoneNumber(action.phone)) {
+                    is Result.Error -> LoginEffect.WrongPhoneEffect(1)
+                    is Result.Success ->
+                        if (result.data) {
+                            coordinator.navigateToConfirmation()
+                            LoginEffect.NothingEffect
+                        } else {
+                            LoginEffect.WrongPhoneEffect(1)
+                        }
+                }
             }
             is LoginAction.PhoneLengthChangeAction -> {
                 val isProbablyRussianNumber = action.length == WELL_FORMATTED_RUSSIAN_NUMBER_LENGTH

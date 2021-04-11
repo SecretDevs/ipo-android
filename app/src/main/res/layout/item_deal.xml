@@ -6,6 +6,7 @@
     style="@style/Theme.Ipo.DealCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:tag="item"
     tools:layout_marginEnd="16dp"
     tools:layout_marginStart="16dp"
     tools:layout_marginTop="16dp">
@@ -113,6 +114,7 @@
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginEnd="@dimen/margin_default"
             android:layout_marginBottom="@dimen/margin_default"
+            android:textAppearance="@style/TextAppearance.Theme.Ipo.Paragraph"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

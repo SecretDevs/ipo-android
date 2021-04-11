@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.roblox.ipo.R
 import com.roblox.ipo.base.recycler.EmptyViewHolder
-import com.roblox.ipo.vo.inapp.IpoResult
+import com.roblox.ipo.vo.inapp.Statistic
 
 class StatisticAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val dataList: MutableList<IpoResult> = mutableListOf()
+    private val dataList: MutableList<Statistic> = mutableListOf()
 
-    fun updateData(newData: List<IpoResult>) {
+    fun updateData(newData: List<Statistic>) {
         dataList.clear()
         dataList.addAll(newData)
         notifyDataSetChanged()

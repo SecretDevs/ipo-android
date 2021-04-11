@@ -7,6 +7,7 @@ import com.roblox.ipo.deals.statistic.StatisticFragment
 import com.roblox.ipo.onboarding.confrimation.ConfirmationFragment
 import com.roblox.ipo.onboarding.login.LoginFragment
 import com.roblox.ipo.onboarding.quiz.*
+import com.roblox.ipo.onboarding.quiz.risk.QuizRiskFragment
 import com.roblox.ipo.onboarding.welcome.WelcomeFragment
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
@@ -119,7 +120,7 @@ class CoordinatorImpl @Inject constructor(
     }
 
     override fun start() {
-        navigateToDeals()
+        navigateToConfirmation()
     }
 
     override fun pop() {

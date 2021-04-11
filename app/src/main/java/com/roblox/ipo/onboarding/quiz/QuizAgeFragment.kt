@@ -7,20 +7,19 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.roblox.ipo.R
+import com.roblox.ipo.data.usecase.QuizUseCase
 import com.roblox.ipo.navigation.Coordinator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_quiz_age.*
-import kotlinx.android.synthetic.main.fragment_quiz_age.quiz_next_btn
-import kotlinx.android.synthetic.main.fragment_quiz_age.quiz_skip_btn
-import kotlinx.android.synthetic.main.fragment_quiz_age.quiz_step
-import kotlinx.android.synthetic.main.fragment_quiz_tools.*
-import java.lang.NumberFormatException
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class QuizAgeFragment : Fragment() {
     @Inject
     lateinit var coordinator: Coordinator
+
+    @Inject
+    lateinit var quizUseCase: QuizUseCase
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,22 +35,16 @@ class QuizAgeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         quiz_step.text = resources.getString(R.string.text_quiz_step, 1)
         quiz_skip_btn.setOnClickListener {
+            quizUseCase.clear()
             coordinator.navigateToDeals()
         }
         quiz_next_btn.setOnClickListener {
+            quizUseCase.saveAge(quiz_card_input.text.toString().toIntOrNull() ?: 0)
             coordinator.navigateToQuizFund()
         }
         quiz_card_input.doOnTextChanged { text, _, _, _ ->
-            try {
-                quiz_next_btn.isEnabled = Integer.parseInt(text.toString()) >= 18
-            } catch (_: NumberFormatException) {
-                quiz_next_btn.isEnabled = false
-            }
+            quiz_next_btn.isEnabled = text.toString().toIntOrNull() ?: 0 >= 18
         }
-        try {
-            quiz_next_btn.isEnabled = Integer.parseInt(quiz_card_input.text.toString()) >= 18
-        } catch (_: NumberFormatException) {
-            quiz_next_btn.isEnabled = false
-        }
+        quiz_next_btn.isEnabled = quiz_card_input.text.toString().toIntOrNull() ?: 0 >= 18
     }
 }

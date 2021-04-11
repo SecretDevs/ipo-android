@@ -6,12 +6,15 @@ sealed class FavoriteDealsAction : MviAction {
 
     object LoadDealsAction : FavoriteDealsAction()
 
+    object PagingLoadDealsAction : FavoriteDealsAction()
+
     data class NavigateToDealDetails(
-        val dealId: Long
+        val dealId: String
     ) : FavoriteDealsAction()
 
     data class ToggleDealFaveAction(
-        val dealId: Long
+        val dealId: String,
+        val newState: Boolean
     ) : FavoriteDealsAction()
 
 }

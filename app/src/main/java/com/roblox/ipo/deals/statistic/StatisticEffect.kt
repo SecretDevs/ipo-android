@@ -1,14 +1,14 @@
 package com.roblox.ipo.deals.statistic
 
 import com.roblox.ipo.base.MviEffect
-import com.roblox.ipo.vo.inapp.Portfolio
+import com.roblox.ipo.vo.inapp.Stats
 
 sealed class StatisticEffect : MviEffect {
 
     object NothingEffect : StatisticEffect()
 
     data class LoadedDataEffect(
-        val data: Portfolio
+        val data: Stats
     ) : StatisticEffect()
 
     object LoadingEffect : StatisticEffect()
