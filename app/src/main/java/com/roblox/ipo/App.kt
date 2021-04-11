@@ -1,6 +1,7 @@
 package com.roblox.ipo
 
 import android.app.Application
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
@@ -11,6 +12,11 @@ class App : Application() {
         super.onCreate()
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
+        }
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            it.let {
+                Timber.d(it.result)
+            }
         }
     }
 
