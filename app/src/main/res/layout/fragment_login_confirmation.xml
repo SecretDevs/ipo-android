@@ -103,6 +103,8 @@
                     android:inputType="number"
                     android:textAlignment="center"
                     android:autofillHints="smsOTPCode"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Login"
+                    android:maxLength="1"
                     tools:text="5" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -129,6 +131,8 @@
                     android:gravity="center_horizontal"
                     android:inputType="number"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Login"
+                    android:maxLength="1"
                     tools:text="7" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -155,6 +159,8 @@
                     android:gravity="center_horizontal"
                     android:inputType="number"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Login"
+                    android:maxLength="1"
                     tools:text="8" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -182,6 +188,8 @@
                     android:gravity="center_horizontal"
                     android:inputType="number"
                     android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Login"
+                    android:maxLength="1"
                     tools:text="5" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -217,7 +225,7 @@
         android:paddingEnd="32dp"
         android:text="@string/text_btn_login_confirmation_resend_code"
         android:textAppearance="@style/TextAppearance.Theme.Ipo.Button"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@drawable/white_button_text_color"
         app:backgroundTint="@color/colorGray2"
         app:layout_constraintBottom_toTopOf="@+id/login_confirmation_next_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -236,6 +244,7 @@
         android:paddingEnd="32dp"
         android:text="@string/text_btn_login_confirmation_next"
         android:textAppearance="@style/TextAppearance.Theme.Ipo.Button"
+        android:textColor="@drawable/primary_button_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/login_confirmation_resend_code"
         app:layout_constraintHorizontal_bias="0.5"

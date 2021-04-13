@@ -52,11 +52,11 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             coordinator.start()
             bottom_navigation.selectedItemId = LAST_ITEM
-            supportFragmentManager.registerFragmentLifecycleCallbacks(
-                bottomNavigationViewVisibilityCallback,
-                false
-            )
         }
+        supportFragmentManager.registerFragmentLifecycleCallbacks(
+            bottomNavigationViewVisibilityCallback,
+            false
+        )
         makeStatusBarTransparent()
 
         bottom_navigation.setOnNavigationItemSelectedListener {

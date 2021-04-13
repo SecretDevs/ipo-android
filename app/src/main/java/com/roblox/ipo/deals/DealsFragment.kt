@@ -27,7 +27,6 @@ class DealsFragment : BaseFragment<DealsViewState, DealsIntent>() {
         fragmentAdapter = DealsFragmentAdapter(this)
         viewpager.adapter = fragmentAdapter
         TabLayoutMediator(tabs_layout, viewpager) { tab, position ->
-            viewpager.setCurrentItem(tab.position, true)
             tab.setText(
                 when (position) {
                     0 -> R.string.title_fragment_deals_tab_favorite

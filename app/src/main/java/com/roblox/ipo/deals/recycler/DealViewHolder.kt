@@ -39,7 +39,7 @@ class DealViewHolder(
             DateUtils.formatDateTime(
                 root.context,
                 data.createdTime,
-                DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_NUMERIC_DATE
+                DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_NUMERIC_DATE or DateUtils.FORMAT_SHOW_YEAR
             ),
             DateUtils.formatDateTime(
                 root.context,

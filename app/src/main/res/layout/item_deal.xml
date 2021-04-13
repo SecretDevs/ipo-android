@@ -18,12 +18,15 @@
 
         <TextView
             android:id="@+id/item_deal_number"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.Theme.Ipo.Subtext"
             android:textColor="@color/colorOnBackgroundMedium"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@+id/item_deal_date"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="#13551" />
@@ -32,14 +35,11 @@
             android:id="@+id/item_deal_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="@dimen/margin_default"
             android:textAppearance="@style/TextAppearance.Theme.Ipo.Subtext"
             android:textColor="@color/colorOnBackgroundMedium"
             app:layout_constraintEnd_toStartOf="@+id/item_deal_favorite_btn"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/item_deal_number"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="20.03.2020 • 22:25" />
 

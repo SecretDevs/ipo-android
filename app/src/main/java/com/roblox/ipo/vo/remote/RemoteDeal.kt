@@ -3,7 +3,7 @@ package com.roblox.ipo.vo.remote
 import com.squareup.moshi.Json
 
 data class RemoteDeal(
-    val id: String?,
+    @Json(name = "_id") val id: String?,
     val name: String,
     val ticker: String,
     val description: String,

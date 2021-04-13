@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.roblox.ipo.R
+import java.util.*
 
 enum class RecyclerState(val viewType: Int) {
     LOADING(100000),
@@ -60,6 +61,9 @@ abstract class BaseStateAdapter<T, VH : DataViewHolder<T>>(
     )
 
     fun updateData(newData: List<T>, state: RecyclerState) {
+        if (dataList.containsAll(newData) && state == this.state) {
+            return
+        }
         dataList.clear()
         dataList.addAll(newData)
         this.state = state

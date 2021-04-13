@@ -12,6 +12,7 @@ interface AuthUseCase {
     fun saveUserPhoneNumber(phoneNumber: String)
     fun getUserPhoneNumber(): String
     fun getUserToken(): String
+    fun isTokenExists(): Boolean
     suspend fun requestCodeForPhoneNumber(phoneNumber: String): Result<Boolean>
     suspend fun checkRequestedCode(code: String): Result<Boolean>
 }
@@ -36,7 +37,9 @@ class AuthUseCaseImpl @Inject constructor(
         }
     }
 
-    override fun getUserToken(): String = "Bearer ${pref.getString(TOKEN_FIELD, "")}" ?: ""
+    override fun getUserToken(): String = "Bearer ${pref.getString(TOKEN_FIELD, "")}"
+
+    override fun isTokenExists(): Boolean = pref.getString(TOKEN_FIELD, "") != ""
 
     override suspend fun requestCodeForPhoneNumber(phoneNumber: String): Result<Boolean> {
         val numberAsLong = phoneNumberFromStringToLong(phoneNumber)

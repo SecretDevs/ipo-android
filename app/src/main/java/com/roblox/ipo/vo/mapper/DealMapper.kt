@@ -1,21 +1,24 @@
 package com.roblox.ipo.vo.mapper
 
+import com.roblox.ipo.utils.DateConverter
 import com.roblox.ipo.vo.inapp.Deal
 import com.roblox.ipo.vo.remote.RemoteDeal
 import javax.inject.Inject
 
-class DealMapper @Inject constructor() : Mapper<Deal, RemoteDeal> {
+class DealMapper @Inject constructor(
+    private val dateConverter: DateConverter
+) : Mapper<Deal, RemoteDeal> {
     override fun fromInappToRemote(data: Deal): RemoteDeal =
         RemoteDeal(
             id = data.id,
             name = data.name,
             ticker = data.nameTraded,
             description = data.description,
-            createdAt = "",
-            updatedAt = "",
+            createdAt = dateConverter.fromTimestampToIsoString(data.createdTime) ?: "",
+            updatedAt = dateConverter.fromTimestampToIsoString(data.updatedTime),
             isFavourite = data.isFavorite,
-            risk = riskInappMapper[data.risk] ?: throw IllegalStateException("unknown risk"),
-            status = statusInappMapper[data.state] ?: throw IllegalStateException("unknown status")
+            risk = riskInappMapper[data.risk] ?: "Низкий",
+            status = statusInappMapper[data.state] ?: "opened"
         )
 
     override fun fromRemoteToInapp(data: RemoteDeal): Deal =
@@ -24,11 +27,11 @@ class DealMapper @Inject constructor() : Mapper<Deal, RemoteDeal> {
             name = data.name,
             nameTraded = data.ticker,
             description = data.description,
-            createdTime = 0L,
-            updatedTime = 0L,
+            createdTime = dateConverter.fromIsoStringToTimestamp(data.createdAt) ?: 0L,
+            updatedTime = dateConverter.fromIsoStringToTimestamp(data.updatedAt),
             isFavorite = data.isFavourite ?: false,
-            risk = riskRemoteMapper[data.risk] ?: throw IllegalStateException("unknown risk"),
-            state = statusRemoteMapper[data.status] ?: throw IllegalStateException("unknown status")
+            risk = riskRemoteMapper[data.risk] ?: 1,
+            state = statusRemoteMapper[data.status] ?: 1
         )
 
     companion object {

@@ -105,8 +105,6 @@
     <style name="Theme.IPO.InputField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeErrorColor">@color/colorRed</item>
         <item name="hintTextColor">@color/colorOnBackgroundMedium</item>
-        <item name="hintTextAppearance">@style/TextAppearance.Theme.Ipo.Login</item>
-        <item name="android:textAppearance">@style/TextAppearance.Theme.Ipo.Login</item>
         <item name="android:textColor">@color/colorOnBackground</item>
         <item name="hintEnabled">false</item>
         <item name="errorIconDrawable">@null</item>
@@ -115,17 +113,16 @@
     <style name="Theme.IPO.InputField.Dropdown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="boxStrokeErrorColor">@color/colorRed</item>
         <item name="hintTextColor">@color/colorOnBackgroundMedium</item>
-        <item name="hintTextAppearance">@style/TextAppearance.Theme.Ipo.Login</item>
-        <item name="android:textAppearance">@style/TextAppearance.Theme.Ipo.Login</item>
         <item name="android:textColor">@color/colorOnBackground</item>
         <item name="hintEnabled">false</item>
         <item name="labelVisibilityMode">unlabeled</item>
     </style>
 
     <style name="Theme.IPO.ChoiceChip" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/colorChipBackground</item>
+        <item name="chipBackgroundColor">@drawable/selection_chip_background_color</item>
         <item name="shapeAppearance">@style/Theme.Ipo.SmoothCornerView</item>
         <item name="android:textAppearance">@style/TextAppearance.Theme.Ipo.Paragraph.Bold</item>
+        <item name="android:textColor">@drawable/selection_chip_text_color</item>
     </style>
 
     <style name="Theme.Ipo.CircleImageView" parent="">

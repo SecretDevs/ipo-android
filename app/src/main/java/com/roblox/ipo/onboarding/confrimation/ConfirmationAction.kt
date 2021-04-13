@@ -14,4 +14,6 @@ sealed class ConfirmationAction : MviAction {
 
     object NavigateToNextAction : ConfirmationAction()
 
+    object ResendCodeAction : ConfirmationAction()
+
 }

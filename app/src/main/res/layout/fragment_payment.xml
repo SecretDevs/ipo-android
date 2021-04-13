@@ -92,7 +92,9 @@
                     android:hint="@string/hint_payment_card_number"
                     android:autofillHints="creditCardNumber"
                     android:inputType="number"
-                    tools:hint="Номер карты" />
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Login"
+                    tools:hint="Номер карты"
+                    tools:drawableEnd="@drawable/ic_visa_logo"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,6 +118,7 @@
                     android:hint="@string/hint_payment_card_name"
                     android:inputType="textPersonName"
                     android:autofillHints="personName"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Login"
                     tools:hint="Имя держателя карты" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -141,8 +144,11 @@
                     android:layout_height="match_parent"
                     android:hint="@string/hint_payment_card_date"
                     android:inputType="date"
+                    android:maxLength="5"
                     android:autofillHints="creditCardExpirationDate"
-                    tools:hint="Имя держателя карты" />
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Login"
+                    android:drawableEnd="@drawable/ic_date"
+                    tools:hint="Дата" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,7 +172,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/hint_payment_card_cvv"
+                    android:maxLength="3"
                     android:autofillHints="creditCardSecurityCode"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Login"
                     android:inputType="number"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -177,7 +185,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.7" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -224,6 +231,7 @@
         android:paddingEnd="32dp"
         android:text="@string/text_btn_payment"
         android:textAppearance="@style/TextAppearance.Theme.Ipo.Button"
+        android:textColor="@drawable/primary_button_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent"

@@ -22,7 +22,7 @@ class ConfirmationViewModel @ViewModelInject constructor(
             ConfirmationIntent.ConfirmationNothingIntent -> throw IllegalArgumentException("Nothing intent interpreting")
             ConfirmationIntent.InitialIntent -> ConfirmationAction.LoadPhoneNumberAction
             ConfirmationIntent.NextClickIntent -> ConfirmationAction.NavigateToNextAction
-            ConfirmationIntent.ResendCodeIntent -> ConfirmationAction.LoadPhoneNumberAction
+            ConfirmationIntent.ResendCodeIntent -> ConfirmationAction.ResendCodeAction
             is ConfirmationIntent.ValidateConfirmationCodeIntent -> ConfirmationAction.ValidateCodeAction(
                 intent.code
             )
@@ -47,6 +47,10 @@ class ConfirmationViewModel @ViewModelInject constructor(
                         if (result.data) ConfirmationEffect.CorrectCodeEffect
                         else ConfirmationEffect.WrongCodeEffect
                 }
+            }
+            ConfirmationAction.ResendCodeAction -> {
+                authUseCase.requestCodeForPhoneNumber(authUseCase.getUserPhoneNumber())
+                ConfirmationEffect.NothingEffect
             }
         }
 

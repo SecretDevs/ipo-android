@@ -2,6 +2,7 @@ package com.roblox.ipo.navigation
 
 import androidx.fragment.app.FragmentActivity
 import com.roblox.ipo.R
+import com.roblox.ipo.data.usecase.AuthUseCase
 import com.roblox.ipo.deals.DealsFragment
 import com.roblox.ipo.deals.statistic.StatisticFragment
 import com.roblox.ipo.onboarding.confrimation.ConfirmationFragment
@@ -33,7 +34,8 @@ interface Coordinator {
 
 @ActivityScoped
 class CoordinatorImpl @Inject constructor(
-    @ActivityScoped activity: FragmentActivity
+    @ActivityScoped activity: FragmentActivity,
+    private val authUseCase: AuthUseCase
 ) : Coordinator {
     private val fragmentManager = activity.supportFragmentManager
 
@@ -46,6 +48,12 @@ class CoordinatorImpl @Inject constructor(
 
     override fun navigateToLogin() {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, LoginFragment())
             .addToBackStack("ONBOARDING")
             .commitAllowingStateLoss()
@@ -53,6 +61,12 @@ class CoordinatorImpl @Inject constructor(
 
     override fun navigateToConfirmation() {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, ConfirmationFragment())
             .addToBackStack("LOGIN")
             .commitAllowingStateLoss()
@@ -61,12 +75,24 @@ class CoordinatorImpl @Inject constructor(
     override fun navigateToQuizAge() {
         clearBackStack()
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, QuizAgeFragment())
             .commitAllowingStateLoss()
     }
 
     override fun navigateToQuizFund() {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, QuizFundFragment())
             .addToBackStack("AGE")
             .commitAllowingStateLoss()
@@ -74,6 +100,12 @@ class CoordinatorImpl @Inject constructor(
 
     override fun navigateToQuizExperience() {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, QuizExperienceFragment())
             .addToBackStack("FUND")
             .commitAllowingStateLoss()
@@ -81,6 +113,12 @@ class CoordinatorImpl @Inject constructor(
 
     override fun navigateToQuizTools() {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, QuizToolsFragment())
             .addToBackStack("EXPERIENCE")
             .commitAllowingStateLoss()
@@ -88,6 +126,12 @@ class CoordinatorImpl @Inject constructor(
 
     override fun navigateToQuizTarget() {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, QuizTargetFragment())
             .addToBackStack("TOOLS")
             .commitAllowingStateLoss()
@@ -95,6 +139,12 @@ class CoordinatorImpl @Inject constructor(
 
     override fun navigateToQuizProfitability() {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, QuizProfitabilityFragment())
             .addToBackStack("TARGET")
             .commitAllowingStateLoss()
@@ -102,6 +152,12 @@ class CoordinatorImpl @Inject constructor(
 
     override fun navigateToQuizRisk() {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, QuizRiskFragment())
             .addToBackStack("PROFITABILITY")
             .commitAllowingStateLoss()
@@ -110,12 +166,24 @@ class CoordinatorImpl @Inject constructor(
     override fun navigateToDeals() {
         clearBackStack()
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, DealsFragment.newInstance())
             .commitAllowingStateLoss()
     }
 
     override fun navigateToStatistic() {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(R.id.fragment_container, StatisticFragment())
             .addToBackStack("DEALS")
             .commitAllowingStateLoss()
@@ -123,6 +191,12 @@ class CoordinatorImpl @Inject constructor(
 
     override fun navigateToPayment(paymentType: Int, paymentAmount: Int) {
         fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
+            )
             .replace(
                 R.id.fragment_container,
                 PaymentFragment.newInstance(paymentType, paymentAmount)
@@ -132,7 +206,10 @@ class CoordinatorImpl @Inject constructor(
     }
 
     override fun start() {
-        navigateToDeals()
+        if (authUseCase.isTokenExists())
+            navigateToDeals()
+        else
+            navigateToOnboarding()
     }
 
     override fun pop() {

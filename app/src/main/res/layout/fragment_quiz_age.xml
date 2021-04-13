@@ -105,7 +105,8 @@
                     android:ellipsize="start"
                     android:gravity="center_horizontal"
                     android:inputType="number"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.Theme.Ipo.Login" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,6 +141,7 @@
         android:paddingEnd="32dp"
         android:text="@string/text_btn_quiz_next"
         android:textAppearance="@style/TextAppearance.Theme.Ipo.Button"
+        android:textColor="@drawable/primary_button_text_color"
         app:layout_constraintBottom_toTopOf="@+id/quiz_skip_btn"
         app:layout_constraintEnd_toEndOf="@+id/quiz_skip_btn"
         app:layout_constraintStart_toStartOf="@+id/quiz_skip_btn"
@@ -157,7 +159,7 @@
         android:paddingEnd="32dp"
         android:text="@string/text_btn_quiz_skip"
         android:textAppearance="@style/TextAppearance.Theme.Ipo.Button"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@drawable/white_button_text_color"
         app:backgroundTint="@color/colorGray2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

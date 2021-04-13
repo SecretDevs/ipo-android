@@ -104,12 +104,15 @@ abstract class BaseEndlessAdapter<T, VH : DataViewHolder<T>>(
             RecyclerEndlessState.ERROR -> getErrorViewHolder(layoutInflater, parent)
             RecyclerEndlessState.EMPTY -> getEmptyViewHolder(layoutInflater, parent)
             RecyclerEndlessState.ITEM -> getDataViewHolder(layoutInflater, parent)
-            RecyclerEndlessState.PAGING_LOADING -> getPagingLoadingViewHolder(layoutInflater, parent)
+            RecyclerEndlessState.PAGING_LOADING -> getPagingLoadingViewHolder(
+                layoutInflater,
+                parent
+            )
             RecyclerEndlessState.PAGING_ERROR -> getPagingErrorViewHolder(layoutInflater, parent)
         }
     }
 
-    override fun getItemCount() = if (dataList.isNotEmpty()) dataList.size else 1
+    override fun getItemCount() = dataList.size + if (state != RecyclerEndlessState.ITEM) 1 else 0
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (dataList.isNotEmpty()) {

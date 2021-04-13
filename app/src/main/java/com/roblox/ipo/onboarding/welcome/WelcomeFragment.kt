@@ -1,5 +1,6 @@
 package com.roblox.ipo.onboarding.welcome
 
+import android.view.ViewAnimationUtils
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.roblox.ipo.R
@@ -21,14 +22,23 @@ class WelcomeFragment : BaseFragment<WelcomeViewState, WelcomeIntent>() {
         onboarding_sign_in.setOnClickListener {
             _intentLiveData.value = WelcomeIntent.LoginClickIntent
         }
+        onboarding_first_card.post {
+            val cx = onboarding_first_card.width / 2
+            val cy = onboarding_first_card.height / 2
+
+            // get the final radius for the clipping circle
+            val finalRadius = Math.hypot(cx.toDouble(), cy.toDouble()).toFloat()
+
+            // create the animator for this view (the start radius is zero)
+            val anim = ViewAnimationUtils.createCircularReveal(onboarding_first_card, cx, cy, 0f, finalRadius)
+                .setDuration(700)
+            // make the view visible and start the animation
+            onboarding_first_card.isVisible = true
+            anim.start()
+        }
     }
 
     override fun render(viewState: WelcomeViewState) {
-        if (viewState.isLogoShown) {
-            onboarding_first_card.isVisible = true //TODO: remove with animation
-        } else {
-            onboarding_first_card.isVisible = false
-        }
     }
-    
+
 }

@@ -15,6 +15,7 @@
     <color name="colorOnSurface">#2E313A</color>
     <color name="colorOnSurfaceMedium">#B0B4C8</color>
     <color name="colorOnError">#ffffff</color>
+    <color name="colorDarkGray">#b0b4c8</color>
     <color name="colorGray">#E1E4EE</color>
     <color name="colorBorders">#E8E8E8</color>
 

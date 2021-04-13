@@ -1,12 +1,12 @@
 package com.roblox.ipo.payment
 
-import android.view.autofill.AutofillManager
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import com.roblox.ipo.R
 import com.roblox.ipo.base.BaseFragment
+import com.roblox.ipo.utils.CardNumberTextWatcher
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_payment.*
 import kotlinx.android.synthetic.main.fragment_payment_error.*
@@ -35,6 +35,7 @@ class PaymentFragment : BaseFragment<PaymentViewState, PaymentIntent>() {
         payment_with_google_pay_btn.setOnClickListener {
             _intentLiveData.value = PaymentIntent.PayWithGooglePayIntent
         }
+
         payment_card_layout_card_cvv.doOnTextChanged { text, _, _, _ ->
             _intentLiveData.value = PaymentIntent.CvvLengthChangeIntent(text?.length ?: 0)
         }
@@ -46,7 +47,33 @@ class PaymentFragment : BaseFragment<PaymentViewState, PaymentIntent>() {
         }
         payment_card_layout_card_number.doOnTextChanged { text, _, _, _ ->
             _intentLiveData.value = PaymentIntent.CardNumberChangeIntent(text?.length ?: 0)
+
+            var matched = false
+            if (text?.length ?: 0 >= 2) {
+                patterns.forEach {
+                    if (text?.substring(0, 2)?.matches(it.first) == true) {
+                        matched = true
+                        payment_card_layout_card_number.setCompoundDrawablesWithIntrinsicBounds(
+                            0,
+                            0,
+                            it.second,
+                            0
+                        )
+                    }
+                }
+            }
+            if (!matched) {
+                payment_card_layout_card_number.setCompoundDrawablesWithIntrinsicBounds(
+                    0,
+                    0,
+                    0,
+                    0
+                )
+            }
         }
+
+        payment_card_layout_card_number.addTextChangedListener(CardNumberTextWatcher())
+
         payment_btn_status_ok.setOnClickListener {
             _intentLiveData.value = PaymentIntent.BackArrowClickIntent
         }
@@ -94,6 +121,11 @@ class PaymentFragment : BaseFragment<PaymentViewState, PaymentIntent>() {
 
         private const val PAYMENT_TYPE = "PAYMENT_TYPE"
         private const val PAYMENT_PRICE = "PAYMENT_PRICE"
+
+        private val patterns = listOf(
+            Regex("^4[0-9]$") to R.drawable.ic_visa_logo,
+            Regex("^5[1-5]$") to R.drawable.ic_mc_symbol
+        )
     }
 
 }
